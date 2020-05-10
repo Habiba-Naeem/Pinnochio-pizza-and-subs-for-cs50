@@ -1,0 +1,88 @@
+$font: 'Julius Sans One';
+#navbar{
+    background-color: #272121;
+    padding: 1%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    li{
+        list-style: none;
+        display: inline-block;
+    }
+    button{
+        font-family: $font;
+        font-size: 1.3rem;
+        background-color: transparent;
+        border: none;
+    }
+    a{
+        font-family: $font;
+        color: #000;
+        text-decoration: none;
+    }
+    a:hover{
+        font-weight: bolder;
+    }
+}
+
+#heading{
+    background-color: #ff4d00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    h1{
+        font-size: 4rem;
+    }
+}
+#menu{
+    #pizza{
+        background-color: #ff0000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        h1{
+            font-size: 3rem;
+        }
+        #mypizzas{
+            background-color: #272121;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            #regular,#sicilian,{
+                
+                overflow: hidden;
+                h3{
+                    font-size: 2rem;
+                }
+                label{
+                    display: block;
+                    font-size: 1.5rem;
+                    margin: 1%;
+                }
+                #size{
+                    label{
+                        display: inline-block;
+                    }
+                }
+                .pizza-divs{
+                    margin-bottom: 2%;
+                }
+                .pizza-select,.pizza-select-toppings,.add-to-cart, .quantity{
+                    width: 100%;
+                    font-family: $font;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+    }
+}

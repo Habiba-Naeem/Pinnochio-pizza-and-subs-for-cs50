@@ -1,3 +1,67 @@
+#navbar {
+  background-color: #272121;
+  padding: 1%;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+  #navbar ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; }
+  #navbar li {
+    list-style: none;
+    display: inline-block; }
+  #navbar button {
+    font-family: "Julius Sans One";
+    font-size: 1.3rem;
+    background-color: transparent;
+    border: none; }
+  #navbar a {
+    font-family: "Julius Sans One";
+    color: #000;
+    text-decoration: none; }
+  #navbar a:hover {
+    font-weight: bolder; }
 
+#heading {
+  background-color: #ff4d00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; }
+  #heading h1 {
+    font-size: 4rem; }
+
+#menu #pizza {
+  background-color: #ff0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap; }
+  #menu #pizza h1 {
+    font-size: 3rem; }
+  #menu #pizza #mypizzas {
+    background-color: #272121;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row; }
+    #menu #pizza #mypizzas #regular, #menu #pizza #mypizzas #sicilian {
+      overflow: hidden; }
+      #menu #pizza #mypizzas #regular h3, #menu #pizza #mypizzas #sicilian h3 {
+        font-size: 2rem; }
+      #menu #pizza #mypizzas #regular label, #menu #pizza #mypizzas #sicilian label {
+        display: block;
+        font-size: 1.5rem;
+        margin: 1%; }
+      #menu #pizza #mypizzas #regular #size label, #menu #pizza #mypizzas #sicilian #size label {
+        display: inline-block; }
+      #menu #pizza #mypizzas #regular .pizza-divs, #menu #pizza #mypizzas #sicilian .pizza-divs {
+        margin-bottom: 2%; }
+      #menu #pizza #mypizzas #regular .pizza-select, #menu #pizza #mypizzas #regular .pizza-select-toppings, #menu #pizza #mypizzas #regular .add-to-cart, #menu #pizza #mypizzas #regular .quantity, #menu #pizza #mypizzas #sicilian .pizza-select, #menu #pizza #mypizzas #sicilian .pizza-select-toppings, #menu #pizza #mypizzas #sicilian .add-to-cart, #menu #pizza #mypizzas #sicilian .quantity {
+        width: 100%;
+        font-family: "Julius Sans One";
+        font-size: 1rem; }
 
 /*# sourceMappingURL=index.css.map */

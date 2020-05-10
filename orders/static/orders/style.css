@@ -1,5 +1,8 @@
 html, body{
-    padding: 5%;
-    margin: 0 auto;
-    background-color: rgb(202, 164, 164);
+    padding: 0%;
+    margin: 0%;
+    background-color: #443737;
+}
+body{
+    font-family: 'Julius Sans One', sans-serif;
 }

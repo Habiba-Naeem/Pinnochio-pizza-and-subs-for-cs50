@@ -1,0 +1,47 @@
+
+{% extends "orders/layout.html"%}
+{% load static %}
+{% block content %}
+        <section id="register">
+            <article>
+                <div>
+                    <h1>Register</h1>
+                    <form method="post" action="{% url 'register' %}">
+                        
+                        {% csrf_token %}
+                        <label>Username</label>
+                        <input type="text" name="username" required>
+                        <label>First name</label>
+                        <input type="text" name="first-name" required>
+                        <label>Last name</label>
+                        <input type="text" name="last-name" required>
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirm-password" required>
+                        <button type="submit">Register</button>
+                        {{message}}
+                    </form>
+                </div>
+            </article>
+        </section>
+        <section id="login">
+            <article>
+                <div>
+                    <h1>Log in</h1>
+                    <form method="post" action="{% url 'login' %}">
+                        
+                        {% csrf_token %}
+        
+                        <label>Username</label>
+                        <input type="text" name="username">
+                        <label>password</label>
+                        <input type="password" name="password">
+                        <button type="submit">Log in</button>
+                    </form>
+                </div>
+            </article>
+        </section>
+{% endblock %}

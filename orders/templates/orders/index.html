@@ -8,22 +8,87 @@
     <article id="pizza">
         <h1>Menu</h1>
         <h2>Pizza</h2>
-        <div>
-            <h3>Regular Pizza</h3>
-            <img>
-            <div>
-                <label>Toppings</label>
-                <select>
-                    {% for pizza in pizzas %}
-                    <option>{{ pizza.get_topping_display }}</option>
-                    {% endfor %}
-                </select>
+        <div id="mypizzas">
+            <div id="regular">
+                <h3>Regular Pizza</h3>
+                <img>
+                <div class="pizza-divs">
+                    <label>Toppings</label>
+                    <select class="pizza-select">
+                        {% for pizza in pizzas %}
+                        <option>{{ pizza.get_topping_display }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="pizza-divs">
+                    <label>Select toppings</label>
+                    <select class="pizza-select-toppings">
+                        {% for topping in toppings %}
+                        <option>{{ topping }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="pizza-divs" id="size">
+                    <label>Small</label>
+                    <input type="radio" name="size">
+                    <label>Large</label>
+                    <input type="radio" name="size">
+                </div>
+                <div class="pizza-divs">
+                    <label>Quantity</label>
+                    <input type="number" class="quantity" min="0">
+                    <!--add proice-->
+                </div>
+                <div class="pizza-divs">
+                    <button class="add-to-cart">
+                        Add to cart
+                    </button>
+                </div>
             </div>
+            <div id="sicilian">
+                <h3>Sicilian Pizza</h3>
+                <img>
+                <div class="pizza-divs">
+                    <label>Toppings</label>
+                    <select class="pizza-select">
+                        {% for pizza in pizzas %}
+                        <option id="{{ pizza.get_topping_display }}">{{ pizza.get_topping_display }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div  class="pizza-divs">
+                    <label>Select toppings</label>
+                    <select class="pizza-select-toppings">
+                        {% for topping in toppings %}
+                        <option>{{ topping }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="pizza-divs" id="size">
+                    <label>Small</label>
+                    <input type="radio" name="size">
+                    <label>Large</label>
+                    <input type="radio" name="size">
+                </div>
+                <div class="pizza-divs">
+                    <label>Quantity</label>
+                    <input type="number" class="quantity" minlength="0">
+                </div>
+                <div class="pizza-divs">
+                    <button class="add-to-cart">
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article id="subs">
+        <h2>Subs</h2>
+        <div>
             <div>
-                <label>Select toppings</label>
                 <select>
-                    {% for topping in toppings %}
-                    <option>{{ topping }}</option>
+                    {% for sub in subs %}
+                    <option>{{ sub.sub }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -36,7 +101,7 @@
             <div>
                 <label>Quantity</label>
                 <input type="number">
-                <!--add proice-->
+                <!--add price-->
             </div>
             <div>
                 <button>
@@ -45,14 +110,57 @@
             </div>
         </div>
     </article>
-    <article id="subs">
-        <h1>Menu</h1>
-        <h2>Subs</h2>
+    <article id="pasta">
+        <h2>Pasta</h2>
         <div>
             <div>
                 <select>
-                    {% for sub in subs %}
-                    <option>{{ sub.sub }}</option>
+                    {% for pasta in pastas %}
+                    <option>{{ pasta.pasta }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>Quantity</label>
+                <input type="number">
+                <!--add price-->
+            </div>
+            <div>
+                <button>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </article>
+    <article id="salad">
+        <h2>Salad</h2>
+        <div>
+            <div>
+                <select>
+                    {% for salad in salass %}
+                    <option>{{ salad.salad }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>Quantity</label>
+                <input type="number">
+                <!--add price-->
+            </div>
+            <div>
+                <button>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </article>
+    <article id="dinnerplatter">
+        <h2>Dinner Platter</h2>
+        <div>
+            <div>
+                <select>
+                    {% for platter in dinnerplatters %}
+                    <option>{{ platter.platter }}</option>
                     {% endfor %}
                 </select>
             </div>

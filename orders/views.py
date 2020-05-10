@@ -8,7 +8,7 @@ def index(request):
         "pizzas" : Pizza.objects.all(),
         "pastas" : Pastas.objects.all(),
         "subs" : Subs.objects.all(),
-        "dinner-pallets" : DinnerPlatters.objects.all(),
+        "dinnerplatters" : DinnerPlatters.objects.all(),
         "toppings" : Toppings.objects.all(),
         "salads" : Salads.objects.all()
     }
