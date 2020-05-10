@@ -1,0 +1,21 @@
+{% extends "user/layout.html" %}
+
+{% block content %}
+<section id="login">
+    <article>
+        <div>
+            <h1>Log in</h1>
+            <form method="post" action="{% url 'login' %}">
+                
+                {% csrf_token %}
+
+                <label>Username</label>
+                <input type="text" name="username">
+                <label>password</label>
+                <input type="password" name="password">
+                <button type="submit">Log in</button>
+            </form>
+        </div>
+    </article>
+</section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "orders/layout.html" %}
+
+{% block content %}
+<section id="heading">
+    <h1>Pinocchio's Pizza & Subs</h1>
+</section>
+<section id="menu">
+    <article id="pizza">
+        <h1>Menu</h1>
+        <h2>Pizza</h2>
+        <div>
+            <h3>Regular Pizza</h3>
+            <img>
+            <div>
+                <label>Toppings</label>
+                <select>
+                    {% for pizza in pizzas %}
+                    <option>{{ pizza.get_topping_display }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>Select toppings</label>
+                <select>
+                    {% for topping in toppings %}
+                    <option>{{ topping }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>Small</label>
+                <input type="radio" name="size">
+                <label>Large</label>
+                <input type="radio" name="size">
+            </div>
+            <div>
+                <label>Quantity</label>
+                <input type="number">
+                <!--add proice-->
+            </div>
+            <div>
+                <button>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </article>
+    <article id="subs">
+        <h1>Menu</h1>
+        <h2>Subs</h2>
+        <div>
+            <div>
+                <select>
+                    {% for sub in subs %}
+                    <option>{{ sub.sub }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>Small</label>
+                <input type="radio" name="size">
+                <label>Large</label>
+                <input type="radio" name="size">
+            </div>
+            <div>
+                <label>Quantity</label>
+                <input type="number">
+                <!--add price-->
+            </div>
+            <div>
+                <button>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </article>
+</section>
+{% endblock %}

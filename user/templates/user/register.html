@@ -1,0 +1,31 @@
+{% extends "user/layout.html" %}
+
+{% block content %}
+<section id="register">
+    <article>
+        <div>
+            <h1>Register</h1>
+            <form method="post" action="{% url 'register' %}">
+                <!--<label>Username</label>
+                <input type="text" name="username">
+                <label>First name</label>
+                <input type="text" name="first-username">
+                <label>Last name</label>
+                <input type="text" name="last-username">
+                <label>Email</label>
+                <input type="email" name="email">
+                <label>Password</label>
+                <input type="password" name="password">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm-password">
+                -->
+                {{ form }}
+
+                {% csrf_token %}
+                
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </article>
+</section>
+{% endblock %}
