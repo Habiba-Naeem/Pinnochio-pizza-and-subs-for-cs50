@@ -84,26 +84,26 @@
     </article>
     <article id="subs">
         <h2>Subs</h2>
-        <div>
-            <div>
-                <select>
+        <div class="dp-s-div" id="subs-div">
+            <div class="dp-s-select-div" id="subs-select-div">
+                <select class="dp-s-select" id="subs-select">
                     {% for sub in subs %}
                     <option>{{ sub.sub }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div>
+            <div class="dp-s-size" id="subs-size">
                 <label>Small</label>
                 <input type="radio" name="size">
                 <label>Large</label>
                 <input type="radio" name="size">
             </div>
-            <div>
+            <div class="dp-s-quantity" id="subs-quantity">
                 <label>Quantity</label>
                 <input type="number">
                 <!--add price-->
             </div>
-            <div>
+            <div class="dp-s-cart" id="subs-add-to-cart">
                 <button>
                     Add to cart
                 </button>
@@ -112,20 +112,20 @@
     </article>
     <article id="pasta">
         <h2>Pasta</h2>
-        <div>
-            <div>
-                <select>
+        <div class="same-div-p-and-s" id="pasta-div">
+            <div class="select-div-p-and-s" id="pasta-select-div">
+                <select class="select" id="pasta-select">
                     {% for pasta in pastas %}
                     <option>{{ pasta.pasta }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div>
+            <div class="quantity" id="pasta-quantity">
                 <label>Quantity</label>
                 <input type="number">
                 <!--add price-->
             </div>
-            <div>
+            <div class="p-s-cart" id="pasta-add-to-cart">
                 <button>
                     Add to cart
                 </button>
@@ -134,20 +134,20 @@
     </article>
     <article id="salad">
         <h2>Salad</h2>
-        <div>
-            <div>
-                <select>
+        <div class="same-div-p-and-s" id="salad-div">
+            <div class="select-div-p-and-s" id="salad-select-div">
+                <select class="select" id="salad-select">
                     {% for salad in salass %}
                     <option>{{ salad.salad }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div>
+            <div class="quantity" id="salad-quantity">
                 <label>Quantity</label>
                 <input type="number">
                 <!--add price-->
             </div>
-            <div>
+            <div class="p-s-cart" id="pasta-add-to-cart">
                 <button>
                     Add to cart
                 </button>
@@ -156,26 +156,26 @@
     </article>
     <article id="dinnerplatter">
         <h2>Dinner Platter</h2>
-        <div>
-            <div>
-                <select>
+        <div class="dp-s-div" id="dp-div">
+            <div class="dp-s-select-div"> 
+                <select class="dp-s-select" id="dp-select">
                     {% for platter in dinnerplatters %}
                     <option>{{ platter.platter }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div>
+            <div class="dp-s-size" id="dp-size">
                 <label>Small</label>
                 <input type="radio" name="size">
                 <label>Large</label>
                 <input type="radio" name="size">
             </div>
-            <div>
+            <div class="dp-s-quantity" id="dp-quantity">
                 <label>Quantity</label>
                 <input type="number">
                 <!--add price-->
             </div>
-            <div>
+            <div class="dp-s-cart" id="dp-add-to-cart">
                 <button>
                     Add to cart
                 </button>

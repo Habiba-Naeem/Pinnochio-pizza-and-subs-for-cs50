@@ -1,5 +1,26 @@
+#menu #pizza, #subs, #dinnerplatter, #pasta, #salad {
+  background-color: #00111a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: #fcc14a;
+  padding-bottom: 3%; }
+
+#menu #pizza #mypizzas #regular label, #menu #pizza #mypizzas #sicilian label, #subs label, #dinnerplatter label, #pasta .same-div-p-and-s label, #salad .same-div-p-and-s label {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1%; }
+
+#menu #pizza #mypizzas #regular .pizza-select, #menu #pizza #mypizzas #regular .pizza-select-toppings, #menu #pizza #mypizzas #regular .add-to-cart, #menu #pizza #mypizzas #regular .quantity, #menu #pizza #mypizzas #sicilian .pizza-select, #menu #pizza #mypizzas #sicilian .pizza-select-toppings, #menu #pizza #mypizzas #sicilian .add-to-cart, #menu #pizza #mypizzas #sicilian .quantity, #subs .dp-s-select-div select, #subs .dp-s-quantity select, #subs .dp-s-cart select, #dinnerplatter .dp-s-select-div select, #dinnerplatter .dp-s-quantity select, #dinnerplatter .dp-s-cart select, #subs .dp-s-select-div, #subs .dp-s-quantity, #subs .dp-s-cart, #dinnerplatter .dp-s-select-div, #dinnerplatter .dp-s-quantity, #dinnerplatter .dp-s-cart, #subs .dp-s-select-div input[type=number], #subs .dp-s-quantity input[type=number], #subs .dp-s-cart input[type=number], #dinnerplatter .dp-s-select-div input[type=number], #dinnerplatter .dp-s-quantity input[type=number], #dinnerplatter .dp-s-cart input[type=number], #subs .dp-s-select-div button, #subs .dp-s-quantity button, #subs .dp-s-cart button, #dinnerplatter .dp-s-select-div button, #dinnerplatter .dp-s-quantity button, #dinnerplatter .dp-s-cart button, #pasta .same-div-p-and-s .select-div-p-and-s .select, #pasta .same-div-p-and-s .select-div-p-and-s input[type=number], #pasta .same-div-p-and-s .select-div-p-and-s button, #pasta .same-div-p-and-s .quantity .select, #pasta .same-div-p-and-s .quantity input[type=number], #pasta .same-div-p-and-s .quantity button, #pasta .same-div-p-and-s .p-s-cart .select, #pasta .same-div-p-and-s .p-s-cart input[type=number], #pasta .same-div-p-and-s .p-s-cart button, #salad .same-div-p-and-s .select-div-p-and-s .select, #salad .same-div-p-and-s .select-div-p-and-s input[type=number], #salad .same-div-p-and-s .select-div-p-and-s button, #salad .same-div-p-and-s .quantity .select, #salad .same-div-p-and-s .quantity input[type=number], #salad .same-div-p-and-s .quantity button, #salad .same-div-p-and-s .p-s-cart .select, #salad .same-div-p-and-s .p-s-cart input[type=number], #salad .same-div-p-and-s .p-s-cart button {
+  width: 100%;
+  font-family: "Julius Sans One";
+  padding: 1%;
+  font-size: 1rem; }
+
 #navbar {
-  background-color: #272121;
+  background-color: #00111a;
   padding: 1%;
   position: fixed;
   top: 0;
@@ -18,13 +39,13 @@
     border: none; }
   #navbar a {
     font-family: "Julius Sans One";
-    color: #000;
+    color: #fcc14a;
     text-decoration: none; }
   #navbar a:hover {
     font-weight: bolder; }
 
 #heading {
-  background-color: #ff4d00;
+  background-color: #f57e00;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,36 +53,58 @@
   #heading h1 {
     font-size: 4rem; }
 
-#menu #pizza {
-  background-color: #ff0000;
+#menu #pizza h1 {
+  font-size: 3rem; }
+#menu #pizza h2 {
+  font-size: 2rem; }
+#menu #pizza #mypizzas {
+  background-color: #00111a;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap; }
-  #menu #pizza h1 {
-    font-size: 3rem; }
-  #menu #pizza #mypizzas {
-    background-color: #272121;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row; }
-    #menu #pizza #mypizzas #regular, #menu #pizza #mypizzas #sicilian {
-      overflow: hidden; }
-      #menu #pizza #mypizzas #regular h3, #menu #pizza #mypizzas #sicilian h3 {
-        font-size: 2rem; }
-      #menu #pizza #mypizzas #regular label, #menu #pizza #mypizzas #sicilian label {
-        display: block;
-        font-size: 1.5rem;
-        margin: 1%; }
-      #menu #pizza #mypizzas #regular #size label, #menu #pizza #mypizzas #sicilian #size label {
-        display: inline-block; }
-      #menu #pizza #mypizzas #regular .pizza-divs, #menu #pizza #mypizzas #sicilian .pizza-divs {
-        margin-bottom: 2%; }
-      #menu #pizza #mypizzas #regular .pizza-select, #menu #pizza #mypizzas #regular .pizza-select-toppings, #menu #pizza #mypizzas #regular .add-to-cart, #menu #pizza #mypizzas #regular .quantity, #menu #pizza #mypizzas #sicilian .pizza-select, #menu #pizza #mypizzas #sicilian .pizza-select-toppings, #menu #pizza #mypizzas #sicilian .add-to-cart, #menu #pizza #mypizzas #sicilian .quantity {
-        width: 100%;
-        font-family: "Julius Sans One";
-        font-size: 1rem; }
+  justify-content: space-evenly;
+  flex-direction: row; }
+  #menu #pizza #mypizzas #regular, #menu #pizza #mypizzas #sicilian {
+    width: 20%;
+    overflow: hidden; }
+    #menu #pizza #mypizzas #regular h3, #menu #pizza #mypizzas #sicilian h3 {
+      font-size: 1.5rem; }
+    #menu #pizza #mypizzas #regular #size label, #menu #pizza #mypizzas #sicilian #size label {
+      display: inline-block; }
+    #menu #pizza #mypizzas #regular .pizza-divs, #menu #pizza #mypizzas #sicilian .pizza-divs {
+      margin-bottom: 2%; }
+
+#subs, #dinnerplatter {
+  padding-top: 3%;
+  background-color: #f57e00;
+  color: black; }
+  #subs h2, #dinnerplatter h2 {
+    font-size: 2rem; }
+  #subs .dp-s-div, #dinnerplatter .dp-s-div {
+    width: 20%;
+    overflow: hidden; }
+  #subs .dp-s-size label, #dinnerplatter .dp-s-size label {
+    display: inline-block; }
+  #subs .dp-s-select-div, #subs .dp-s-quantity, #subs .dp-s-cart, #dinnerplatter .dp-s-select-div, #dinnerplatter .dp-s-quantity, #dinnerplatter .dp-s-cart {
+    margin-bottom: 2%; }
+
+#pasta h2, #salad h2 {
+  font-size: 2rem; }
+#pasta .same-div-p-and-s, #salad .same-div-p-and-s {
+  width: 20%;
+  overflow: hidden; }
+  #pasta .same-div-p-and-s .select-div-p-and-s, #pasta .same-div-p-and-s .quantity, #pasta .same-div-p-and-s .p-s-cart, #salad .same-div-p-and-s .select-div-p-and-s, #salad .same-div-p-and-s .quantity, #salad .same-div-p-and-s .p-s-cart {
+    margin-bottom: 2%; }
+
+.dp-s-cart button:hover, .p-s-cart button:hover {
+  cursor: pointer;
+  background-color: #d72828;
+  color: #fcc14a;
+  border: none; }
+
+.add-to-cart:hover {
+  cursor: pointer;
+  border: none;
+  background-color: #d72828;
+  color: #fcc14a; }
 
 /*# sourceMappingURL=index.css.map */
