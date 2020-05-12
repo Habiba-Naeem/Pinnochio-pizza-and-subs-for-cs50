@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'orders/style.css' %}">
         <link rel="stylesheet" href="{% static 'orders/index.css' %}">
+        <link rel="stylesheet" href="{% static 'user/index.css' %}">
         <script src="{% static 'orders/mainscript.js' %}"></script>
 
         <title>Pinocchio's Pizza & Subs</title>
@@ -14,39 +15,47 @@
     <body>
         <nav id="navbar">
             <ul>
-                <li id="li">
+                <li class="li">
                     <button>
-                        <a href="">
+                        <a  id="home-link" >
                             Home
                         </a>
                     </button>
                 </li>
-                <li id="li">
+                <li class="li">
                     <button>
-                        <a href="">
+                        <a id="menu-link">
                             Menu
                         </a>
                     </button>
                 </li>
-                <li id="li">
+                <li class="li">
                     <button>
-                        <a href="">
+                        <a id="cart-link" href="">
                             Cart
                         </a>
                     </button>
                 </li>
-                <li id="li">
+                {% if user %}
+                    <li class="li">
+                        <button>
+                            <a  id="{{ user.username }}-link" href="{% url 'index'%}">
+                                {{ user.username }}
+                            </a>
+                        </button>
+                    </li>
+                {% endif %}
+                <li class="li">
                     <button>
-                        <a href="">
-                            Order
-                        </a>
-                    </button>
-                </li>
-                <li id="li">
-                    <button>
-                        <a href="">
-                            Login
-                        </a>
+                        {% if user.username %}
+                            <a  id="logout-link" href="{% url 'logout' %}">
+                                Logout
+                            </a>
+                        {% else %}
+                            <a  id="login-link" href="{% url 'login' %}">
+                                Login
+                            </a>
+                        {% endif %}
                     </button>
                 </li>
             </ul>

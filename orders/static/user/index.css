@@ -1,0 +1,57 @@
+.reg-log-sec, .reg-log-sec #buttons, .reg-log-sec #register, .reg-log-sec #login, .reg-log-sec #register div, .reg-log-sec #login div, .reg-log-sec #register div form, .reg-log-sec #login div form {
+  background-color: #00111a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: #fcc14a;
+  padding-bottom: 3%; }
+
+.reg-log-sec {
+  padding-top: 10%;
+  width: 30%;
+  margin-left: 35%; }
+  .reg-log-sec #register {
+    display: none; }
+  .reg-log-sec #buttons {
+    padding-top: 1%;
+    background-color: #002538;
+    width: 100%;
+    flex-direction: row; }
+    .reg-log-sec #buttons button {
+      margin: 2%;
+      width: 30%;
+      font-family: "Julius Sans One";
+      padding: 1%;
+      font-size: 1rem;
+      background-color: #fcc14a;
+      border: 1px solid #f57e00;
+      border-radius: 0.2rem; }
+  .reg-log-sec #register, .reg-log-sec #login {
+    width: 100%; }
+    .reg-log-sec #register div, .reg-log-sec #login div {
+      width: 100%; }
+      .reg-log-sec #register div form, .reg-log-sec #login div form {
+        background-color: #002538;
+        width: 100%; }
+        .reg-log-sec #register div form input, .reg-log-sec #register div form label, .reg-log-sec #register div form button, .reg-log-sec #login div form input, .reg-log-sec #login div form label, .reg-log-sec #login div form button {
+          width: 70%;
+          padding: 1%;
+          margin: 2%;
+          border: none;
+          background-color: transparent; }
+        .reg-log-sec #register div form input, .reg-log-sec #login div form input {
+          border-bottom: 1px solid #f57e00;
+          color: #fcc14a; }
+        .reg-log-sec #register div form button, .reg-log-sec #login div form button {
+          background-color: #fcc14a;
+          padding: 2%; }
+          .reg-log-sec #register div form button:hover, .reg-log-sec #register div form button:active, .reg-log-sec #login div form button:hover, .reg-log-sec #login div form button:active {
+            background-color: #f57e00;
+            cursor: pointer; }
+    .reg-log-sec #register label, .reg-log-sec #login label {
+      display: block;
+      margin-bottom: 2%; }
+
+/*# sourceMappingURL=index.css.map */
