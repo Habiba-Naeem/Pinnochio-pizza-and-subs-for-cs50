@@ -1,21 +1,17 @@
 from django.db import models
 # Create your models here.
-Type_of_pizza = (
-    ('Reg', 'Regular'),
-    ('Sl', 'Sicilian')
-)
 
 Sizes = ( 
-    ('S', 'Small'),
-    ('L', 'Large')
+    ('Small', 'Small'),
+    ('Large', 'Large')
 )
 
 No_of_Topping = (
-    ('C', 'Cheese'),
-    ('one', '1 topping'),
-    ('two', '2 toppings'),
-    ('three', '3 toppings'),
-    ('five', '5 toppings')
+    ('Cheese', 'Cheese'),
+    ('One topping', '1 topping'),
+    ('Two toppings', '2 toppings'),
+    ('Three toppings', '3 toppings'),
+    ('Five toppings', '5 toppings')
 )
 
 class Toppings(models.Model):
@@ -25,25 +21,49 @@ class Toppings(models.Model):
         return f"{self.topping}"
 
 class Pizza(models.Model): 
+    size = models.CharField( max_length = 20, choices = Sizes, default = Sizes )
+    topping = models.CharField( max_length = 20, choices = No_of_Topping, default = No_of_Topping ) 
+    def __str__(self):
+        return f"{self.size}, {self.topping}"
 
-    pizza = models.CharField( max_length = 20, choices = Type_of_pizza)
-    size = models.CharField( max_length = 20, choices = Sizes )
-    topping = models.CharField( max_length = 20, choices = No_of_Topping )
+
+class Regular_Pizza(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE, null = True)
     price = models.DecimalField( max_digits = 10, decimal_places = 2 ) 
     
     def __str__(self):
-        return f"{self.pizza} pizza,  {self.size}, {self.topping}, ${self.price}"
+        return f"${self.price}, {self.pizza}"
 
-class Subs(models.Model):
-    sub = models.CharField( max_length = 20 )
-    size = models.CharField( max_length = 20, choices = Sizes )
-    extras = models.CharField( max_length = 20, blank = True )
+class Sicilian_Pizza(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE, null = True)
+    price = models.DecimalField( max_digits = 10, decimal_places = 2 ) 
+    
+    def __str__(self):
+        return f"${self.price}, {self.pizza}"
+
+class Extra(models.Model):
+    extra = models.CharField( max_length = 20, blank = True )
     price_of_extra = models.DecimalField( max_digits = 10, decimal_places = 2, null = True, blank = True) 
+    
+    def __str__(self):
+        return f"{self.extra},  {self.price_of_extra}"
+
+class Subs_Items(models.Model):
+    sub = models.CharField( max_length = 20 )
+    extra = models.ForeignKey(Extra, on_delete=models.CASCADE, null = True, blank = True )
+    
+    def __str__(self):
+        return f"{self.sub},{self.extra}"
+
+ 
+class Subs(models.Model):
+    size = models.CharField( max_length = 20, choices = Sizes, default = Sizes )
+    sub = models.ForeignKey(Subs_Items, on_delete=models.CASCADE, null = True)
     price = models.DecimalField( max_digits = 10, decimal_places = 2 ) 
     
 
     def __str__(self):
-        return f"{self.sub},  {self.size}, ${self.price}"
+        return f"{self.sub}, ${self.price}, {self.size}"
 
 class Pastas(models.Model):
     pasta = models.CharField( max_length = 20 )
@@ -57,10 +77,15 @@ class Salads(models.Model):
     def __str__(self):
         return f"{self.salad}, ${self.price}"
 
+class Platter_Item(models.Model):
+    platter = models.CharField( max_length = 20,  null = True )
+    def __str__(self):
+        return f"{self.platter}"
+    
 class DinnerPlatters(models.Model):
-    platter = models.CharField( max_length = 20 )
-    size = models.CharField( max_length = 20, choices = Sizes )
-    price = models.DecimalField( max_digits = 10, decimal_places = 2 ) 
+    size = models.CharField( max_length = 20, choices = Sizes, default = Sizes )
+    platter = models.ForeignKey(Platter_Item, on_delete=models.CASCADE, null = True )
+    price = models.DecimalField( max_digits = 10, decimal_places = 2, null = True ) 
 
     def __str__(self):
-        return f"{self.platter},  {self.size} , ${self.price}"
+        return f"{self.platter}, ${self.price}, {self.size},"
