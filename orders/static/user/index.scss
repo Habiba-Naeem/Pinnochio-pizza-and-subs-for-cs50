@@ -76,3 +76,15 @@ $cream:  hsl(40, 97%, 64%);
         }
     }
 }
+.cart{
+    @extend %articles;
+    padding-top: 10%;
+    background-color: lavender;
+    float: left;
+}
+.checkout {
+    @extend %articles;
+    padding-top: 10%;
+    background-color: lavender;
+    display: inline-block;
+}

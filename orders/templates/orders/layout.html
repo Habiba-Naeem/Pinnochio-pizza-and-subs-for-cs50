@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{% static 'orders/index.css' %}">
         <link rel="stylesheet" href="{% static 'user/index.css' %}">
         <script src="{% static 'orders/mainscript.js' %}"></script>
+        <script src="{% static 'user/mainscript.js' %}"></script>
 
         <title>Pinocchio's Pizza & Subs</title>
     </head>
@@ -31,7 +32,7 @@
                 </li>
                 <li class="li">
                     <button>
-                        <a id="cart-link" href="">
+                        <a id="cart-link" href="{% url 'cart' %}">
                             Cart
                         </a>
                     </button>
@@ -39,9 +40,7 @@
                 {% if user %}
                     <li class="li">
                         <button>
-                            <a  id="{{ user.username }}-link" href="{% url 'index'%}">
-                                {{ user.username }}
-                            </a>
+                            {{ user.username }}
                         </button>
                     </li>
                 {% endif %}

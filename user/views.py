@@ -15,7 +15,7 @@ def index(request):
     context = {
         "user": request.user
     }
-    return render(request, "orders/cart.html", context)
+    return HttpResponseRedirect(reverse("cart") , context)
 
 def login_user(request):
     username = request.POST.get("username")
@@ -63,8 +63,16 @@ def register(request):
            
     return render(request, 'user/index.html')
 
-       
+   
 """
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')"""
+
+
+def cart(request):
+    if not request.user.is_authenticated:
+        print("okay")
+        return HttpResponseRedirect(reverse('index'))
+    return render(request, "user/cart.html")
+

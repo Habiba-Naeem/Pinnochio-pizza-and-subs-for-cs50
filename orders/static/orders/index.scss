@@ -26,6 +26,12 @@ $cream:  hsl(40, 97%, 64%);
     padding: 1%;
     font-size: 1rem;
 }
+
+%newlabel{
+    display: inline-block;
+    font-size: 0.8rem;
+    margin: 1%;
+}
 #navbar{
     background-color: $blue;
     padding: 1%;
@@ -66,97 +72,33 @@ $cream:  hsl(40, 97%, 64%);
         font-size: 4rem;
     }
 }
-#menu{
-    #pizza{
-        @extend %articles;
-        h1{
-            font-size: 3rem;
-        }
-        h2{
-            font-size: 2rem;
-        }
-        #mypizzas{
-            background-color:  $blue;
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            flex-direction: row;
-            #regular,#sicilian{
-                width: 20%;
-                overflow: hidden;
-                h3{
-                    font-size: 1.5rem;
-                }
-                @extend %labels;
-                #size{
-                    label{
-                        display: inline-block;
-                    }
-                }
-                .pizza-divs{
-                    margin-bottom: 2%;
-                }
-                .pizza-select,.pizza-select-toppings,.add-to-cart, .quantity{
-                    @extend %forcontents;
-                }
-            }
-        }
-    }
-}
-#subs, #dinnerplatter{
-        @extend %articles;
-        padding-top: 3%;
-        background-color: $golden;
-        color: black;
-        h2{
-            font-size: 2rem;
-        }
-        .dp-s-div{
-            width: 20%;
-            overflow: hidden;
-        }
-        @extend %labels;
-        .dp-s-size{
-            label{
-                display: inline-block;
-            }
-        }
-        .dp-s-select-div, .dp-s-quantity, .dp-s-cart{
-            margin-bottom: 2%;
-            select{@extend %forcontents;}
-            @extend %forcontents;
-            input[type=number]{
-                @extend %forcontents;
-            }
-            button{
-                @extend %forcontents;
-            }
-        }
-}
-#pasta,#salad{
+#pizza, #subs,#pasta, #salad, #dinnerplatter{
     @extend %articles;
+    h1{
+        font-size: 3rem;
+    }
     h2{
         font-size: 2rem;
     }
-    .same-div-p-and-s{
-        @extend %labels;
+    .contents{
         width: 20%;
         overflow: hidden;
-        .select-div-p-and-s, .quantity, .p-s-cart{
-            margin-bottom: 2%;
-            .select, input[type=number], button{
-                @extend %forcontents;
-            }
+        @extend %labels;
+        .common-div{
+            margin-bottom: 10%;
         }
-    }
+        .select, .add-to-cart{
+            @extend %forcontents;
+        }
+        .smaller-label{
+            @extend %newlabel;
+        }
+
+    }        
 }
-.dp-s-cart, .p-s-cart{
-    button:hover{
-        cursor: pointer;
-        background-color: $red;
-        color: $cream;
-        border: none;
-    }
+#subs, #dinnerplatter{
+    background-color: $golden;
+    color: black;
 }
 .add-to-cart:hover{
         cursor: pointer;
@@ -164,3 +106,4 @@ $cream:  hsl(40, 97%, 64%);
         background-color: $red;
         color: $cream;
 }
+
