@@ -8,24 +8,23 @@ Sizes = (
 
 No_of_Topping = (
     ('Cheese', 'Cheese'),
-    ('One topping', '1 topping'),
-    ('Two toppings', '2 toppings'),
-    ('Three toppings', '3 toppings'),
-    ('Five toppings', '5 toppings')
+    ('One', '1 topping'),
+    ('Two', '2 toppings'),
+    ('Three', '3 toppings'),
+    ('Five', '5 toppings')
 )
+class Menu(models.Model):
+    menu = models.CharField( max_length = 50)
 
+    def __str__(self):
+        return f"{self.menu}"
+        
 class Toppings(models.Model):
     topping =  models.CharField( max_length = 50 )
 
     def __str__(self):
         return f"{self.topping}"
-"""
-class Pizza(models.Model): 
-    size = models.CharField( max_length = 50, choices = Sizes, default = Sizes )
-    topping = models.CharField( max_length = 50, choices = No_of_Topping, default = No_of_Topping ) 
-    def __str__(self):
-        return f"{self.size}, {self.topping}"
-"""
+
 class Regular_Pizza(models.Model):
     size = models.CharField( max_length = 50, choices = Sizes)
     topping = models.CharField( max_length = 50, choices = No_of_Topping) 

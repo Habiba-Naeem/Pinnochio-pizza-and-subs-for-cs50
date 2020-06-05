@@ -107,3 +107,9 @@ $cream:  hsl(40, 97%, 64%);
         color: $cream;
 }
 
+.cart{
+    @extend %articles;
+    padding-top: 5%;
+    background-color: rgb(124, 18, 18);
+    width: 100%;
+}

@@ -1,4 +1,4 @@
-.reg-log-sec, .reg-log-sec #buttons, .reg-log-sec #register, .reg-log-sec #login, .reg-log-sec #register div, .reg-log-sec #login div, .reg-log-sec #register div form, .reg-log-sec #login div form, .cart, .checkout {
+.reg-log-sec, .reg-log-sec #buttons, .reg-log-sec #register, .reg-log-sec #login, .reg-log-sec #register div, .reg-log-sec #login div, .reg-log-sec #register div form, .reg-log-sec #login div form {
   background-color: #00111a;
   display: flex;
   justify-content: center;
@@ -53,15 +53,5 @@
     .reg-log-sec #register label, .reg-log-sec #login label {
       display: block;
       margin-bottom: 2%; }
-
-.cart {
-  padding-top: 10%;
-  background-color: lavender;
-  float: left; }
-
-.checkout {
-  padding-top: 10%;
-  background-color: lavender;
-  display: inline-block; }
 
 /*# sourceMappingURL=index.css.map */

@@ -14,37 +14,45 @@ function linking(link, id){
     var size = 
         
 };*/
-/*
-function loadprice(item){
-    let selection = document.querySelector(`#pizza #select-type`);
-    let topping = document.querySelector(`#pizza #select-no-of-top`);
-    let size = document.querySelector(`#pizza .size:checked`);
 
-    console.log(selection);
-    console.log(topping);
-    console.log(size);
-
+function load_pizza_price(item_name, size, no_of_toppings){
+    
     const request = new XMLHttpRequest();
-    request.open('GET', 'price', true);
+    request.open('GET', `/pizzaprice/${item_name}/${size}/${no_of_toppings}`, true);
 
     request.onload = () => {
         const data = JSON.parse(request.responseText);
-        if (data.context){
+        if (data){
             console.log(data);
+            price.textContent = "$" + data["context"]["price"];
+            price.dataset.price = data["context"]["price"];
         }
         else{
             console.log("unsucees");
         }
     }
-    const data = {
-        selection: selection,
-        topping: topping,
-        size: size
-    }
-    request.send(data);
+    request.send();
     return false;
 }
-*/
+
+function loadprice(item_name, size){
+    const request = new XMLHttpRequest();
+    request.open('GET', `/price/${item_name}/${size}`, true);
+
+    request.onload = () => {
+        const data = JSON.parse(request.responseText);
+        if (data){
+            console.log(data);
+            price.textContent = "$" + data["context"]["price"];
+            price.dataset.price = data["context"]["price"];
+        }
+        else{
+            console.log("unsucees");
+        }
+    }
+    request.send();
+    return false;
+}
 document.addEventListener('DOMContentLoaded', () => {
     var menu_section = document.querySelector("#menu");
     var menu_link = document.querySelector("#menu-link");
@@ -52,9 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var login_button = document.querySelector("#login-button");
     var register_button = document.querySelector("#register-button");
+    var add_to_cart =  document.querySelector("#add-to-cart");
 
-    var pizza = document.querySelector("#pizza");
+    
     var items_buttons = document.querySelectorAll(".items");
+
+    var size = document.querySelectorAll(".size");
+    var no_of_toppings  =  document.querySelectorAll(".no-of-toppings");
+    //var toppings = document.querySelectorAll(".topping");
+    //var quantity = document.querySelector("#quantity");
+    //var price = document.querySelector("#price");
+
 
     items_buttons.forEach( items_button => {
         items_button.addEventListener("click", () => {
@@ -70,8 +86,39 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         })
     });
-    //loadprice(pizza);
 
+
+    size.forEach( s => {
+        s.addEventListener("change", () => {
+            const new_size = document.querySelector(".size:checked").value;
+            const item_name = document.querySelector("#itemname").textContent;
+            quantity.value = 1;
+            if (item_name === "Regular Pizza" || item_name === "Sicilian Pizza"){
+                const no_of_toppings = document.querySelector(".no-of-toppings:checked").value;
+                load_pizza_price(item_name, new_size, no_of_toppings);
+            }
+            else{
+                loadprice(item_name, new_size);
+            }
+            
+        })
+    })
+
+    no_of_toppings.forEach( t => {
+        t.addEventListener("change", () => {
+            const new_size = document.querySelector(".size:checked").value;
+            const no_of_toppings = document.querySelector(".no-of-toppings:checked").value;
+            const item_name = document.querySelector("#itemname").textContent;
+            const quantity = document.querySelector("#quantity");
+            quantity.value = 1;
+            load_pizza_price(item_name, new_size, no_of_toppings);
+        })
+    })
+
+    quantity.addEventListener("change", ()=>{
+        const price = document.querySelector("#price");
+        price.textContent = "$" + (price.dataset.price * quantity.value).toFixed(2);
+    })
     
     /*for( let i = 0 ; i < toppings.length ; i++){
         toppings[i].onclick = selectiveCheck;
@@ -89,13 +136,41 @@ document.addEventListener('DOMContentLoaded', () => {
         linking(home_link, "#heading");
     })
 
-    
+    add_to_cart.addEventListener("click", ()=>{
+        var tops = [];
+        var ex = [];
+        document.querySelectorAll(".toppings:checked").forEach( t =>{
+            tops.push(t.value);
+        })
+        document.querySelectorAll(".extra:checked").forEach( e =>{
+            ex.push(e.value);
+        })
+        
+        const item = {
+            "item_name": document.querySelector("#itemname").textContent,
+            "category": document.querySelector("#itemname").dataset.category,
+            "quantity" : document.querySelector("#quantity").value,
+            "price" : document.querySelector("#price").dataset.price,
+            "size" : document.querySelector(".size:checked").value,
+            "toppings" : tops,
+            "extra" : ex
+       }
+        const convert = JSON.stringify(item);
+       
+        const request = new XMLHttpRequest();
+        request.open('GET', `/cart/cart_item/${convert}`, true);
 
-    /*add_to_cart_button_regular_pizza.addEventListener("click", ()=>{
-        var pizza_type_select = document.querySelector("#allpizza .pizza-select");
-        var no_of_topping_select = document.querySelector("#allpizza #pizza-select-no-of-top");
-        var toppings = document.querySelectorAll("#allpizza .toppings:checked");
-        var size = document.querySelector("#allpizza input[name = 'size']:checked");
-        addtocart(pizza_type_select, no_of_topping_select, toppings, size);
-    })*/
+        request.onload = () => {
+            const data = JSON.parse(request.responseText);
+            if (data.success){
+                console.log("okay")
+            }
+            else{
+                console.log("not okay")
+            }
+        }
+        request.send();
+        return false;
+    })
+
 })

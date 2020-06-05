@@ -15,23 +15,31 @@
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <tr>Extras</tr>
+                    <th>Toppings</th>
+                    <th>Extras</th>
                     <th>Total</th>
                 </tr>
+                {% for cart_item in cart_items %}
                 <tr>
-                    <td></td>
+                    <td>{{ cart_item.product.name }}</td>
+                    <td>{{ cart_item.product.price }}</td>
+                    <td>{{ cart_item.quantity }}</td>
+                    <td>{{ cart_item.product.additionals__toppings.all }}</td>
                 </tr>
+                {% endfor%}
+    
             </table>
         </div>
         </div>
     </article>
 </section>
-<section class="checkout">
+<!--<section class="checkout">
     <article class="checkout">
         <div>
             <h1>Checkout</h1>
         </div>
         </div>
     </article>
-</section>
+</section>-->
+
 {% endblock %}
