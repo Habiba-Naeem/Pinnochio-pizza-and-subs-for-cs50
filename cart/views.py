@@ -35,27 +35,24 @@ def cart_item(request, item):
     except Cart.DoesNotExist:
         cart = Cart.objects.create(user = request.user)
  
- 
-    product = Product.objects.create(name = stuff["item_name"], size = stuff["size"], price = stuff["price"], category = Category.objects.get(menu__id = stuff["category"]))
+    if stuff["toppings"] == "" or stuff["toppings"] == "":
+        product = Product.objects.create(name = stuff["item_name"], size = stuff["size"], price = stuff["price"], category = Category.objects.get(menu__id = stuff["category"]))
+        cart_item = Cart_Item.objects.create(product = product, quantity = stuff["quantity"], cart = cart)
     
     if stuff["toppings"] != "":
         toppings = []
         for top in stuff["toppings"]:
-            print(top)
             toppings.append(Toppings.objects.get(topping = top))
-            add = product.additionals.get_or_create(toppings = Toppings.objects.get(topping = top) )
-            print(add)
-            
+            add = Additional.objects.create(toppings = Toppings.objects.get(topping = top) )
+            product = Product.objects.create(name = stuff["item_name"], size = stuff["size"], price = stuff["price"], category = Category.objects.get(menu__id = stuff["category"]), additionals = add)
+            cart_item = Cart_Item.objects.create(product = product, quantity = stuff["quantity"], cart = cart)
+         
 
     if stuff["extra"] != "":
         extra = []
         for ext in stuff["extra"]:
-            print(ext)
-            print(extra.append(Extra.objects.get(extra = ext)))
-            add = product.additionals.get_or_create(extra = Extra.objects.get(extra = ext))
-            print(add)
-          
-
-    cart_item = Cart_Item.objects.create(product = product, quantity = stuff["quantity"], cart = cart)
+            add = Additional.objects.create(extra = Extra.objects.get(extra = ext) )
+            product = Product.objects.create(name = stuff["item_name"], size = stuff["size"], price = stuff["price"], category = Category.objects.get(menu__id = stuff["category"]), additionals = add)
+            cart_item = Cart_Item.objects.create(product = product, quantity = stuff["quantity"], cart = cart)
     
     return JsonResponse({"success": True})

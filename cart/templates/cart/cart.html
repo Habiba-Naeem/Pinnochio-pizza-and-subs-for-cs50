@@ -24,7 +24,17 @@
                     <td>{{ cart_item.product.name }}</td>
                     <td>{{ cart_item.product.price }}</td>
                     <td>{{ cart_item.quantity }}</td>
-                    <td>{{ cart_item.product.additionals__toppings.all }}</td>
+                    {% if cart_item.product.additionals.toppings %}
+                        {%%}
+                       <td>{{ cart_item.product.additionals.toppings }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    {% if cart_item.product.additionals.extra %}
+                        <td>{{ cart_item.product.additionals.extra.extra }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
                 </tr>
                 {% endfor%}
     
