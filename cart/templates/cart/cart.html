@@ -11,45 +11,55 @@
         </div>
         <div>
             <table>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Toppings</th>
-                    <th>Extras</th>
-                    <th>Total</th>
+                <tr class="begin-row">
+                    <th class="table-heading">Product</th>
+                    <th class="table-heading">Quantity</th>
+                    <th class="table-heading">Total</th>
                 </tr>
                 {% for cart_item in cart_items %}
-                <tr>
-                    <td>{{ cart_item.product.name }}</td>
-                    <td>{{ cart_item.product.price }}</td>
-                    <td>{{ cart_item.quantity }}</td>
-                    {% if cart_item.product.additionals.toppings %}
-                        {%%}
-                       <td>{{ cart_item.product.additionals.toppings }}</td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                    {% if cart_item.product.additionals.extra %}
-                        <td>{{ cart_item.product.additionals.extra.extra }}</td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
+                <tr class="row">
+                    <td class="table-data" id="product-name">{{ cart_item.product.name }}
+                        <br>
+                        <label id="product-price" data-price="{{ cart_item.product.price }}">${{ cart_item.product.price }}</label>
+                        <label id="product-size">{{ cart_item.product.size }}</label>
+                        {% if cart_item.product.additional.toppings.all %}
+                            {% for top in cart_item.product.additional.toppings.all %}
+                                <label id="product-toppings">{{ top }}</label>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if cart_item.product.additional.extra.all %}
+                            {% for extra in cart_item.product.additional.extra.all %}
+                                <label id="product-extras" data-price="{{ extra.price }}">{{ extra.extra }}</label>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                    <td class="table-data" id="cart-item-quantity" data-quantity="{{ cart_item.quantity }}">{{ cart_item.quantity }}</td>
+                
+                    <td class="table-data" id="cart-item-total"></td>
+
+                    <td class="table-data"><button class="cancel">Cancel</button></td>
                 </tr>
                 {% endfor%}
-    
             </table>
         </div>
         </div>
     </article>
 </section>
-<!--<section class="checkout">
+<section class="checkout">
     <article class="checkout">
+        
         <div>
             <h1>Checkout</h1>
         </div>
+        <div>
+            <label id="total">Total</label>
+        </div>
+        <div>
+            
+        </div>
         </div>
     </article>
-</section>-->
+</section>
 
 {% endblock %}

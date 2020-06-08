@@ -113,3 +113,8 @@ $cream:  hsl(40, 97%, 64%);
     background-color: rgb(124, 18, 18);
     width: 100%;
 }
+.checkout{
+    @extend %articles;
+    color: hotpink;
+    background-color: greenyellow;
+}
