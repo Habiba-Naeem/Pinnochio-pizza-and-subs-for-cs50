@@ -10,12 +10,7 @@ import json
 import stripe
 
 stripe.api_key = 'sk_test_51GrotLFndG7VbPdRiDYCHdy2Svytuidnha5rzyr4b8aKp4Bqlxrp3LqrxX3Ihp91jCMUG3vbgayUk2qvIV5ziCsF00KbpgBfVP'
-intent = stripe.PaymentIntent.create(
-  amount=1099,
-  currency='usd',
-  # Verify your integration in this guide by including this parameter
-  metadata={'integration_check': 'accept_a_payment'},
-)
+
 
 
 def index(request):
@@ -26,8 +21,7 @@ def index(request):
     print(Cart_Item.objects.filter(cart__user = request.user))
     context = {
         "user": request.user,
-        "cart_items": Cart_Item.objects.filter(cart__user = request.user),
-        "client_secret": intent.client_secret
+        "cart_items": Cart_Item.objects.filter(cart__user = request.user)
     }
     return render(request, "cart/cart.html", context)
 
@@ -67,6 +61,12 @@ def cart_item(request, item):
          
     return JsonResponse({"success": True})
 
-'''
+
 def secret(request):
-    return JsonResponse({"client_secret" : intent.client_secret})'''
+    intent = stripe.PaymentIntent.create(
+        amount=1099,
+        currency='usd',
+        # Verify your integration in this guide by including this parameter
+        metadata={'integration_check': 'accept_a_payment'},
+        )
+    return JsonResponse({"client_secret" : intent.client_secret})

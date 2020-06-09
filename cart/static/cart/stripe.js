@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     var total = document.querySelector("#total");
     var rows = document.querySelectorAll(".row");
@@ -28,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         count = parseFloat(t.dataset.total) + count;
     })
     total.textContent = "$" + count;
-    
+       
+
         var stripe = Stripe('pk_test_51GrotLFndG7VbPdRyG8LrsOsDLRCN8QrzhPKo0PLBew3Us0USJbjMuriQ3AD0p0CYgdvBgQdMe7gdCZ3wWBNaP6300ayLdsdxB');
         var elements = stripe.elements();
     
@@ -49,33 +49,40 @@ document.addEventListener('DOMContentLoaded', () => {
               displayError.textContent = '';
             }
         });
-    
+        
         var form = document.getElementById('payment-form');
-        var submit =  document.querySelector("#submit");
-        var clientSecret = submit.dataset.secret;
-        form.addEventListener('submit', function(ev) {
-        ev.preventDefault();
-        stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-            card: card,
-            billing_details: {
-                name: 'Jenny Rosen'
-            }
-            }
-        }).then(function(result) {
-            if (result.error) {
-            // Show error to your customer (e.g., insufficient funds)
-            console.log(result.error.message);
-            } else {
-            // The payment has been processed!
-            if (result.paymentIntent.status === 'succeeded') {
-                // Show a success message to your customer
-                // There's a risk of the customer closing the window before callback
-                // execution. Set up a webhook or plugin to listen for the
-                // payment_intent.succeeded event that handles any business critical
-                // post-payment actions.
-            }
-            }
+        
+        var response = fetch('/cart/secret').then(function(response) {
+            return response.json();}).then(function(responseJson) {
+
+            var clientSecret = responseJson.client_secret;
+            // Call stripe.confirmCardPayment() with the client secret.
+            form.addEventListener('submit', function(ev) {
+                ev.preventDefault();
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: 'Jenny Rosen'
+                    }
+                    }
+                }).then(function(result) {
+                    if (result.error) {
+                    // Show error to your customer (e.g., insufficient funds)
+                    console.log(result.error.message);
+                    } else {
+                    // The payment has been processed!
+                    if (result.paymentIntent.status === 'succeeded') {
+                        // Show a success message to your customer
+                        // There's a risk of the customer closing the window before callback
+                        // execution. Set up a webhook or plugin to listen for the
+                        // payment_intent.succeeded event that handles any business critical
+                        // post-payment actions.
+                    }
+                    }
+                });
+                });
         });
-        });
+
+       
 })
