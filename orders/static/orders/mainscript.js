@@ -3,17 +3,6 @@ function linking(link, id){
             link.href = `http://localhost:8000/${id}`;
     }
 }
-/*function addtocart(select, no_of_topping_select, topping, size){
-    var pizza_type = select.options[select.selectedIndex].value;
-    var pizza_no_of_topping = no_of_topping_select.options[no_of_topping_select.selectedIndex].value;
-    var top = () =>{
-        for (var i = 0; i < topping.length; i++) {
-            top.push(topping[i].value)
-          }
-    };
-    var size = 
-        
-};*/
 
 function load_pizza_price(item_name, size, no_of_toppings){
     
@@ -54,6 +43,9 @@ function loadprice(item_name, size){
     request.send();
     return false;
 }
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     var menu_section = document.querySelector("#menu");
     var menu_link = document.querySelector("#menu-link");
@@ -68,36 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var size = document.querySelectorAll(".size");
     var no_of_toppings  =  document.querySelectorAll(".no-of-toppings");
     var quantity = document.querySelector("#quantity");
-    var rows = document.querySelectorAll(".row");
-    var cancel = document.querySelectorAll(".cancel");
-    var total = document.querySelector("#total");
-
-    rows.forEach( row => {
-        const prices = row.querySelector("#product-price");
-        const extras = row.querySelectorAll("#product-extras");
-        const quantity = row.querySelector("#cart-item-quantity");
-        var total = row.querySelector("#cart-item-total");
-        console.log(extras);
-        if (extras.length > 0){
-            var extra_price = 0;
-            extras.forEach( extra =>{
-                extra_price = 0.5 + extra_price;
-            })
-            total.textContent = "$" + ( (prices.dataset.price * quantity.dataset.quantity) + extra_price).toFixed(2);
-            total.setAttribute("data-total", `${( (prices.dataset.price * quantity.dataset.quantity) + extra_price).toFixed(2)}`);
-        }
-        else{
-            total.textContent = "$" +  (prices.dataset.price * quantity.dataset.quantity).toFixed(2);
-            total.setAttribute("data-total", `${(prices.dataset.price * quantity.dataset.quantity).toFixed(2)}`);
-        }
-    })
-
-
-    var count = 0;
-    document.querySelectorAll("#cart-item-total").forEach( t =>{
-        count = parseFloat(t.dataset.total) + count;
-    })
-    total.textContent = "$" + count;
+   
 
     items_buttons.forEach( items_button => {
         items_button.addEventListener("click", () => {
@@ -203,5 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         can.addEventListener("click", ()=>{
 
         })
-    })
+    })    
+
 })

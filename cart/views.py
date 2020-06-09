@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render,redirect 
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -6,7 +7,16 @@ from django.contrib.auth.models import User
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 import json
-# Create your views here.
+import stripe
+
+stripe.api_key = 'sk_test_51GrotLFndG7VbPdRiDYCHdy2Svytuidnha5rzyr4b8aKp4Bqlxrp3LqrxX3Ihp91jCMUG3vbgayUk2qvIV5ziCsF00KbpgBfVP'
+intent = stripe.PaymentIntent.create(
+  amount=1099,
+  currency='usd',
+  # Verify your integration in this guide by including this parameter
+  metadata={'integration_check': 'accept_a_payment'},
+)
+
 
 def index(request):
     if not request.user.is_authenticated:
@@ -16,12 +26,15 @@ def index(request):
     print(Cart_Item.objects.filter(cart__user = request.user))
     context = {
         "user": request.user,
-        "cart_items": Cart_Item.objects.filter(cart__user = request.user)
+        "cart_items": Cart_Item.objects.filter(cart__user = request.user),
+        "client_secret": intent.client_secret
     }
     return render(request, "cart/cart.html", context)
 
 
 def cart_item(request, item):
+
+
     if not request.user.is_authenticated:
         print("okay")
         messages.error(request, "Please login first to add to cart.")
@@ -53,3 +66,7 @@ def cart_item(request, item):
     cart_item = Cart_Item.objects.create(product = product, quantity = stuff["quantity"], cart = cart)
          
     return JsonResponse({"success": True})
+
+'''
+def secret(request):
+    return JsonResponse({"client_secret" : intent.client_secret})'''

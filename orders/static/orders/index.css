@@ -1,4 +1,4 @@
-#pizza, #subs, #pasta, #salad, #dinnerplatter, .cart, .checkout {
+#pizza, #subs, #pasta, #salad, #dinnerplatter, .cart {
   background-color: #00111a;
   display: flex;
   justify-content: center;
@@ -84,7 +84,7 @@
   width: 100%; }
 
 .checkout {
-  color: hotpink;
-  background-color: greenyellow; }
+  color: #0a0000;
+  background-color: #ebf3df; }
 
 /*# sourceMappingURL=index.css.map */
