@@ -52,6 +52,57 @@ document.addEventListener('DOMContentLoaded', () => {
         
         var form = document.getElementById('payment-form');
         
+
+        const request = new XMLHttpRequest();
+        request.open('GET', `/cart/secret/${String(count)}`, true);
+
+        request.onload = () =>{
+            const data = JSON.parse(request.responseText);
+            var clientSecret = data.client_secret;
+
+             // Call stripe.confirmCardPayment() with the client secret.
+             form.addEventListener('submit', function(ev) {
+                ev.preventDefault();
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: data.context.user
+                    }
+                    }
+                }).then(function(result) {
+                    if (result.error) {
+                    // Show error to your customer (e.g., insufficient funds)
+                    console.log(result.error.message);
+                    } 
+                    else {
+                    // The payment has been processed!
+                        if (result.paymentIntent.status === 'succeeded') {
+                            // Show a success message to your customer
+                            // There's a risk of the customer closing the window before callback
+                            // execution. Set up a webhook or plugin to listen for the
+                            // payment_intent.succeeded event that handles any business critical
+                            // post-payment actions.
+                             
+
+                            const request = new XMLHttpRequest();
+                            request.open('GET', `/cart/order/${String(count)}`, true);
+
+                            request.onload = () =>{
+                                const data = JSON.parse(request.responseText);
+                                console.log(data)
+                            }
+                            request.send();
+                            return false;
+
+                        }
+                    }
+                });
+        })
+    }
+        request.send();
+        return false;
+        /*
         var response = fetch('/cart/secret').then(function(response) {
             return response.json();}).then(function(responseJson) {
 
@@ -82,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 });
-        });
-
+        });*/
+             
        
 })

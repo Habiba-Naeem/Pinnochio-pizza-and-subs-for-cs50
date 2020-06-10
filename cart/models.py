@@ -41,3 +41,16 @@ class Cart_Item(models.Model):
 
     def __str__(self):
         return f"{self.product}, {self.quantity}, {self.cart}"
+
+class Order_Items(models.Model):
+    cart_item = models.ManyToManyField(Cart_Item)
+
+    def __str__(self):
+        return f"{self.cart_item}"
+
+class Order(models.Model):
+    order_items = models.ForeignKey(Order_Items, on_delete=models.CASCADE)
+    total = models.DecimalField( max_digits = 10, decimal_places = 2 )
+
+    def __str__(self):
+        return f"{self.order_items}, {self.total}"

@@ -62,11 +62,37 @@ def cart_item(request, item):
     return JsonResponse({"success": True})
 
 
-def secret(request):
+def secret(request, amount):
+
+    print(amount)
+    amount = float(amount)*100
+    print(amount)
+    amount = int(amount)
     intent = stripe.PaymentIntent.create(
-        amount=1099,
+        amount= amount,
         currency='usd',
+
         # Verify your integration in this guide by including this parameter
         metadata={'integration_check': 'accept_a_payment'},
         )
-    return JsonResponse({"client_secret" : intent.client_secret})
+    context = {
+        "user": str(request.user)
+    }
+    return JsonResponse({"client_secret" : intent.client_secret,
+                        "context":context})
+
+def order(request, amount):
+    cart = Cart.objects.get(user = request.user)
+    print(cart)
+    cart_item = Cart_Item.objects.filter(cart = cart)
+    print(cart_item)
+    order_items = Order_Items.objects.create()
+
+    for item in cart_item:
+        print(item.id)
+        order_items.cart_item.add(Cart_Item.objects.get(id= item.id))
+
+    order = Order.objects.create(order_items = order_items, total = amount)
+    print(order)
+    return JsonResponse({"success": True})
+
