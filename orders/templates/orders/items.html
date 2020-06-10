@@ -24,15 +24,15 @@
         {% if pizza %}
         <div>
             <label for="no-of-toppings">None</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Cheese" checked>
+            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Cheese" data-tops="0" checked>
             <label for="no-of-toppings">One topping</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="One">
+            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="One" data-tops="1">
             <label for="no-of-toppings">Two toppings</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Two">
+            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Two" data-tops="2">
             <label for="no-of-toppings">Three toppings</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Three">
+            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Three" data-tops="3">
             <label for="no-of-toppings">Five toppings</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Five">
+            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Five" data-tops="5">
         </div>
         <div>
             {% for topping in toppings %}

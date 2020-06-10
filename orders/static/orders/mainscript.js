@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     var size = document.querySelectorAll(".size");
     var no_of_toppings  =  document.querySelectorAll(".no-of-toppings");
     var quantity = document.querySelector("#quantity");
+    var toppings = document.querySelectorAll(".toppings");
+    
    
-
     items_buttons.forEach( items_button => {
         items_button.addEventListener("click", () => {
             const parent = items_button.parentNode.parentNode.id;
@@ -93,6 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    toppings.forEach( topping =>{
+        topping.disabled = true;
+    })
+
     no_of_toppings.forEach( t => {
         t.addEventListener("change", () => {
             const new_size = document.querySelector(".size:checked").value;
@@ -101,6 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const quantity = document.querySelector("#quantity");
             quantity.value = 1;
             load_pizza_price(item_name, new_size, no_of_toppings);
+            if ( no_of_toppings !== 'Cheese'){
+                toppings.forEach( topping =>{
+                    topping.disabled = false;
+                })
+            }
+            else{
+                toppings.forEach( topping =>{
+                    topping.disabled = true;
+                })
+            }
         })
     })
 
@@ -109,14 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         price.textContent = "$" + (price.dataset.price * quantity.value).toFixed(2);
     })
     
-    /*for( let i = 0 ; i < toppings.length ; i++){
-        toppings[i].onclick = selectiveCheck;
-        function selectiveCheck (event) {
-        var checked = document.querySelectorAll(".toppings:checked");
-        if (checked.length > 3)
-            return false;
-        }
-    }*/
+    
     menu_link.addEventListener("click", ()=>{
         linking(menu_link, "#menu");
     })
@@ -126,6 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     add_to_cart.addEventListener("click", ()=>{
+        const tops1 = document.querySelector(".no-of-toppings:checked");
+        const selected_toppings =  document.querySelectorAll(".toppings:checked");
+        var count = 0;
+        selected_toppings.forEach(s=>{
+            count++;
+        })
+        if( count < parseInt(tops1.dataset.tops) || count > parseInt(tops1.dataset.tops))
+        {
+            alert("Please select all toppings according to the no of toppings");
+            return false;
+        }
         var tops = [];
         var ex = [];
         document.querySelectorAll(".toppings:checked").forEach( t =>{
@@ -160,12 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         request.send();
         return false;
-    })
-
-    cancel.forEach( can=>{
-        can.addEventListener("click", ()=>{
-
-        })
-    })    
+    }) 
 
 })
