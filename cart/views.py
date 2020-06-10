@@ -8,9 +8,9 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 import json
 import stripe
+import os
 
-stripe.api_key = 'sk_test_51GrotLFndG7VbPdRiDYCHdy2Svytuidnha5rzyr4b8aKp4Bqlxrp3LqrxX3Ihp91jCMUG3vbgayUk2qvIV5ziCsF00KbpgBfVP'
-
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 def index(request):
     if not request.user.is_authenticated:
         print("okay")
