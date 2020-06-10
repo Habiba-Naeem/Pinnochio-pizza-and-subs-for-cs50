@@ -10,14 +10,14 @@
             <h1>Your cart</h1>
         </div>
         <div>
-            <table>
+            <table id="table">
                 <tr class="begin-row">
                     <th class="table-heading">Product</th>
                     <th class="table-heading">Quantity</th>
                     <th class="table-heading">Total</th>
                 </tr>
                 {% for cart_item in cart_items %}
-                <tr class="row">
+                <tr class="row" id="{{ cart_item.id }}">
                     <td class="table-data" id="product-name">{{ cart_item.product.name }}
                         <br>
                         <label id="product-price" data-price="{{ cart_item.product.price }}">${{ cart_item.product.price }}</label>

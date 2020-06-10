@@ -11,8 +11,6 @@ import stripe
 
 stripe.api_key = 'sk_test_51GrotLFndG7VbPdRiDYCHdy2Svytuidnha5rzyr4b8aKp4Bqlxrp3LqrxX3Ihp91jCMUG3vbgayUk2qvIV5ziCsF00KbpgBfVP'
 
-
-
 def index(request):
     if not request.user.is_authenticated:
         print("okay")
@@ -24,7 +22,6 @@ def index(request):
         "cart_items": Cart_Item.objects.filter(cart__user = request.user)
     }
     return render(request, "cart/cart.html", context)
-
 
 def cart_item(request, item):
 
@@ -61,7 +58,6 @@ def cart_item(request, item):
          
     return JsonResponse({"success": True})
 
-
 def secret(request, amount):
 
     print(amount)
@@ -96,3 +92,8 @@ def order(request, amount):
     print(order)
     return JsonResponse({"success": True})
 
+def cancel(request, id):
+    cart_item = Cart_Item.objects.get(id = id)
+    cart_item.delete()
+
+    return JsonResponse({"success": True})

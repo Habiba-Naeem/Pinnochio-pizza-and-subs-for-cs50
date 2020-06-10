@@ -1,3 +1,11 @@
+function count(){
+    var count = 0;
+    document.querySelectorAll("#cart-item-total").forEach( t =>{
+        count = parseFloat(t.dataset.total) + count;
+    })
+    total.textContent = "$" + count;
+    return count;    
+}
 document.addEventListener('DOMContentLoaded', () => {
     var total = document.querySelector("#total");
     var rows = document.querySelectorAll(".row");
@@ -22,118 +30,91 @@ document.addEventListener('DOMContentLoaded', () => {
             total.setAttribute("data-total", `${(prices.dataset.price * quantity.dataset.quantity).toFixed(2)}`);
         }
     })
-    var count = 0;
-    document.querySelectorAll("#cart-item-total").forEach( t =>{
-        count = parseFloat(t.dataset.total) + count;
+    
+    count();
+    cancel.forEach( can =>{
+        can.addEventListener("click", ()=>{
+            const parent = can.parentNode.parentNode;
+            const id = parent.id;
+            console.log(id);
+            var table = document.querySelector("#table");
+            table.deleteRow(parent.rowIndex);
+            count();
+
+            const request = new XMLHttpRequest();
+            request.open('GET', `/cart/cancel/${id}`, true);
+
+            request.send();
+            return false;
+            
+        })
     })
-    total.textContent = "$" + count;
-       
-
-        var stripe = Stripe('pk_test_51GrotLFndG7VbPdRyG8LrsOsDLRCN8QrzhPKo0PLBew3Us0USJbjMuriQ3AD0p0CYgdvBgQdMe7gdCZ3wWBNaP6300ayLdsdxB');
-        var elements = stripe.elements();
+    var stripe = Stripe('pk_test_51GrotLFndG7VbPdRyG8LrsOsDLRCN8QrzhPKo0PLBew3Us0USJbjMuriQ3AD0p0CYgdvBgQdMe7gdCZ3wWBNaP6300ayLdsdxB');
+    var elements = stripe.elements();
     
-        var style = {
-            base: {
-              color: "#32325d",
-            }
-        };
+    var style = {
+        base: {
+          color: "#32325d",
+        }
+    };
           
-        var card = elements.create("card", { style: style });
-        card.mount("#card-element");
+    var card = elements.create("card", { style: style });
+    card.mount("#card-element");
     
-        card.on('change', function(event) {
-            var displayError = document.getElementById('card-errors');
-            if (event.error) {
-              displayError.textContent = event.error.message;
-            } else {
-              displayError.textContent = '';
-            }
-        });
-        
-        var form = document.getElementById('payment-form');
-        
+    card.on('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+          displayError.textContent = event.error.message;
+        } else {
+          displayError.textContent = '';
+        }
+    });
 
-        const request = new XMLHttpRequest();
-        request.open('GET', `/cart/secret/${String(count)}`, true);
+    var form = document.getElementById('payment-form');
 
-        request.onload = () =>{
-            const data = JSON.parse(request.responseText);
-            var clientSecret = data.client_secret;
 
-             // Call stripe.confirmCardPayment() with the client secret.
-             form.addEventListener('submit', function(ev) {
+    const request = new XMLHttpRequest();
+    request.open('GET', `/cart/secret/${String(count())}`, true);
+
+    request.onload = () =>{
+        const data = JSON.parse(request.responseText);
+        var clientSecret = data.client_secret;
+
+        // Call stripe.confirmCardPayment() with the client secret.
+        form.addEventListener('submit', function(ev) {
+            var confirmb = confirm(`You confirm to pay ${count()} for the selected items`);
+            if ( confirmb === true ){
                 ev.preventDefault();
                 stripe.confirmCardPayment(clientSecret, {
                     payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: data.context.user
-                    }
+                        card: card,
+                        billing_details: {
+                            name: data.context.user
+                        }
                     }
                 }).then(function(result) {
                     if (result.error) {
-                    // Show error to your customer (e.g., insufficient funds)
-                    console.log(result.error.message);
+                        // Show error to your customer (e.g., insufficient funds)
+                        console.log(result.error.message);
                     } 
                     else {
-                    // The payment has been processed!
+                        // The payment has been processed!
                         if (result.paymentIntent.status === 'succeeded') {
-                            // Show a success message to your customer
-                            // There's a risk of the customer closing the window before callback
-                            // execution. Set up a webhook or plugin to listen for the
-                            // payment_intent.succeeded event that handles any business critical
-                            // post-payment actions.
-                             
-
                             const request = new XMLHttpRequest();
-                            request.open('GET', `/cart/order/${String(count)}`, true);
-
+                            request.open('GET', `/cart/order/${String(count())}`, true);
+    
                             request.onload = () =>{
                                 const data = JSON.parse(request.responseText);
                                 console.log(data)
                             }
                             request.send();
                             return false;
-
                         }
                     }
-                });
+                });}
         })
     }
-        request.send();
-        return false;
-        /*
-        var response = fetch('/cart/secret').then(function(response) {
-            return response.json();}).then(function(responseJson) {
-
-            var clientSecret = responseJson.client_secret;
-            // Call stripe.confirmCardPayment() with the client secret.
-            form.addEventListener('submit', function(ev) {
-                ev.preventDefault();
-                stripe.confirmCardPayment(clientSecret, {
-                    payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: 'Jenny Rosen'
-                    }
-                    }
-                }).then(function(result) {
-                    if (result.error) {
-                    // Show error to your customer (e.g., insufficient funds)
-                    console.log(result.error.message);
-                    } else {
-                    // The payment has been processed!
-                    if (result.paymentIntent.status === 'succeeded') {
-                        // Show a success message to your customer
-                        // There's a risk of the customer closing the window before callback
-                        // execution. Set up a webhook or plugin to listen for the
-                        // payment_intent.succeeded event that handles any business critical
-                        // post-payment actions.
-                    }
-                    }
-                });
-                });
-        });*/
-             
-       
+    request.send();
+    return false;
+   
 })
