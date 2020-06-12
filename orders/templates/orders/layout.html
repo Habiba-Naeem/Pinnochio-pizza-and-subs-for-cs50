@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{% static 'orders/index.css' %}">
         <link rel="stylesheet" href="{% static 'user/index.css' %}">
         <script src="{% static 'orders/mainscript.js' %}"></script>
+        <script src="{% static 'user/mainscript.js' %}"></script>
         <script src="https://js.stripe.com/v3/"></script>
         <script src="{% static 'cart/stripe.js' %}"></script>           
         <title>Pinocchio's Pizza & Subs</title>
@@ -37,6 +38,15 @@
                         </a>
                     </button>
                 </li>
+                {% if request.user.is_superuser %}
+                <li class="li">
+                    <button>
+                        <a id="order-link" href="{% url 'view_order' %}">
+                            Order
+                        </a>
+                    </button>
+                </li>
+                {% endif %}
                 {% if user %}
                     <li class="li">
                         <button>

@@ -82,14 +82,16 @@ def order(request, amount):
     print(cart)
     cart_item = Cart_Item.objects.filter(cart = cart)
     print(cart_item)
-    order_items = Order_Items.objects.create()
 
     for item in cart_item:
         print(item.id)
-        order_items.cart_item.add(Cart_Item.objects.get(id= item.id))
+        order_items = Order_Items.objects.create(product = item.product, quantity = item.quantity, cart = item.cart)
+        order = Order.objects.create(order_items = order_items, total = amount) 
+        print(order)
 
-    order = Order.objects.create(order_items = order_items, total = amount)
-    print(order)
+        cart_item = Cart_Item.objects.get(id = item.id)
+        cart_item.delete()
+
     return JsonResponse({"success": True})
 
 def cancel(request, id):
@@ -97,3 +99,18 @@ def cancel(request, id):
     cart_item.delete()
 
     return JsonResponse({"success": True})
+
+
+def view_order(request):
+    if not request.user.is_authenticated:
+        print("okay")
+        messages.error(request, "Please login first to add to cart.")
+        return HttpResponseRedirect(reverse("index"))
+
+    elif request.user.is_superuser:
+        order = Order.objects.all()
+        print(order)
+        context = {
+            "orders": Order.objects.all()
+        }
+        return render(request, "cart/order.html", context)

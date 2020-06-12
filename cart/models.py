@@ -43,10 +43,12 @@ class Cart_Item(models.Model):
         return f"{self.product}, {self.quantity}, {self.cart}"
 
 class Order_Items(models.Model):
-    cart_item = models.ManyToManyField(Cart_Item)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE, null = True, blank = True)
+    quantity = models.PositiveSmallIntegerField(default = 1)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null = True, blank = True)
 
     def __str__(self):
-        return f"{self.cart_item}"
+        return f"{self.product}, {self.quantity}, {self.cart}"
 
 class Order(models.Model):
     order_items = models.ForeignKey(Order_Items, on_delete=models.CASCADE)

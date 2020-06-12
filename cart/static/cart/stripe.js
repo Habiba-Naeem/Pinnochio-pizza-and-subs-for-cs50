@@ -3,8 +3,8 @@ function count(){
     document.querySelectorAll("#cart-item-total").forEach( t =>{
         count = parseFloat(t.dataset.total) + count;
     })
-    total.textContent = "$" + count;
-    return count;    
+    total.textContent = "$" + count.toFixed(2);
+    return count.toFixed(2);    
 }
 document.addEventListener('DOMContentLoaded', () => {
     var total = document.querySelector("#total");

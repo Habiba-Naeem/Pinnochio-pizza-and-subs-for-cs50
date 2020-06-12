@@ -51,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var menu_link = document.querySelector("#menu-link");
     var home_link = document.querySelector("#home-link");
 
-    var login_button = document.querySelector("#login-button");
-    var register_button = document.querySelector("#register-button");
     var add_to_cart =  document.querySelector("#add-to-cart");
     
     var items_buttons = document.querySelectorAll(".items");
@@ -140,11 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
         selected_toppings.forEach(s=>{
             count++;
         })
-        if( count < parseInt(tops1.dataset.tops) || count > parseInt(tops1.dataset.tops))
-        {
-            alert("Please select all toppings according to the no of toppings");
-            return false;
+        if(tops1){
+            if( count < parseInt(tops1.dataset.tops) || count > parseInt(tops1.dataset.tops)){
+                alert("Please select all toppings according to the no of toppings");
+                return false;
+            }
         }
+        
         var tops = [];
         var ex = [];
         document.querySelectorAll(".toppings:checked").forEach( t =>{
