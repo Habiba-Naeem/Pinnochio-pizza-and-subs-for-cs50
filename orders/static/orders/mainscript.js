@@ -158,14 +158,19 @@ document.addEventListener('DOMContentLoaded', () => {
             ex.push(e.value);
         })
         
-
+        if(document.querySelector(".size")){
+            var size_i = document.querySelector(".size:checked").value;
+        }
+        else{
+            var size_i = '';
+        }
         //the object item
         const item = {
             "item_name": document.querySelector("#itemname").textContent,
             "category": document.querySelector("#itemname").dataset.category,
             "quantity" : document.querySelector("#quantity").value,
             "price" : document.querySelector("#price").dataset.price,
-            "size" : document.querySelector(".size:checked").value,
+            "size" : size_i,
             "toppings" : tops,
             "extra" : ex
         }
