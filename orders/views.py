@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
 from cart.models import Category
+
+
 # Create your views here.
 def index(request):
     context = {
@@ -20,15 +22,14 @@ def index(request):
     }
     return render(request, "orders/index.html", context)
 
+
+#return each menu item based on selection of the user
 def pasta(request, item_name):
-    print(Pastas.objects.get(pasta = item_name).price)
-    print(Category.objects.get(menu__menu = "Pasta").id)
     context = {
         "item_name": item_name,
         "category": Category.objects.get(menu__menu = "Pasta").id,
         "price": Pastas.objects.get(pasta = item_name).price
     }
-    print("jooooooooooooooooo")
     return render(request, "orders/items.html", context)
     
 def pizza(request, item_name):
@@ -40,10 +41,9 @@ def pizza(request, item_name):
             "price": Regular_Pizza.objects.get(size = 'Small', topping = 'Cheese').price,
             "toppings": Toppings.objects.all()
         }
-        print(Regular_Pizza.objects.all())
         return render(request, "orders/items.html", context)
+
     else:
-        print(Sicilian_Pizza.objects.all())
         context = {
             "item_name": item_name,
             "category": Category.objects.get(menu__menu = "Sicilian Pizza").id,
@@ -53,9 +53,10 @@ def pizza(request, item_name):
         }
         return render(request, "orders/items.html", context)
 
+
+
 def subs(request, item_name):
     try:
-        print(Subs.objects.get(subs_items__sub = item_name, size = 'Small').price)
         context = {
             "item_name": item_name,
             "price": Subs.objects.get(subs_items__sub = item_name, size = 'Small').price,
@@ -63,6 +64,7 @@ def subs(request, item_name):
             "category": Category.objects.get(menu__menu = "Subs").id,
             "extras": Extra.objects.all()
         }
+    #if subs with small size do not exists
     except Subs.DoesNotExist:
         context = {
             "item_name": item_name,
@@ -72,6 +74,7 @@ def subs(request, item_name):
             "extras": Extra.objects.all()
         }
         return render(request, "orders/items.html", context)
+
     return render(request, "orders/items.html", context)
     
 def salad(request, item_name):
@@ -84,7 +87,6 @@ def salad(request, item_name):
     return render(request, "orders/items.html", context)
 
 def dinnerplatter(request, item_name):
-    print(DinnerPlatters.objects.get(platter_item__platter = item_name, size = 'Small').price)
     context = {
         "item_name": item_name,
         "category": Category.objects.get(menu__menu = "Dinner Platter").id,
@@ -92,7 +94,9 @@ def dinnerplatter(request, item_name):
         "dinnerplatter": True
     }
     return render(request, "orders/items.html", context)
-    
+
+
+#displaying the price 
 def price(request, item_name, size):
     try:
         print(Subs.objects.get(subs_items__sub = item_name, size = size).price)

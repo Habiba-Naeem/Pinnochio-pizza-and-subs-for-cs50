@@ -13,6 +13,7 @@ No_of_Topping = (
     ('Three', '3 toppings'),
     ('Five', '5 toppings')
 )
+
 class Menu(models.Model):
     menu = models.CharField( max_length = 50)
 
@@ -50,7 +51,6 @@ class Extra(models.Model):
 
 class Subs_Items(models.Model):
     sub = models.CharField( max_length = 50 )
-    #extra = models.ForeignKey(Extra, on_delete=models.CASCADE, null = True, blank = True )
     
     def __str__(self):
         return f"{self.sub}"

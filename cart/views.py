@@ -11,23 +11,22 @@ import stripe
 import os
 
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+
+
 def index(request):
     if not request.user.is_authenticated:
-        print("okay")
         return render(request, "user/index.html", {"message": None})
-    cart_items = Cart_Item.objects.filter(cart__user = request.user)
-    print(Cart_Item.objects.filter(cart__user = request.user))
+
     context = {
         "user": request.user,
         "cart_items": Cart_Item.objects.filter(cart__user = request.user)
     }
     return render(request, "cart/cart.html", context)
 
+
+
 def cart_item(request, item):
-
-
     if not request.user.is_authenticated:
-        print("okay")
         messages.error(request, "Please login first to add to cart.")
         return JsonResponse({"success": False})
 
@@ -59,11 +58,9 @@ def cart_item(request, item):
     return JsonResponse({"success": True})
 
 def secret(request, amount):
-
-    print(amount)
     amount = float(amount)*100
-    print(amount)
     amount = int(amount)
+
     intent = stripe.PaymentIntent.create(
         amount= amount,
         currency='usd',
@@ -78,17 +75,13 @@ def secret(request, amount):
                         "context":context})
 
 def order(request, amount):
+
     cart = Cart.objects.get(user = request.user)
-    print(cart)
     cart_item = Cart_Item.objects.filter(cart = cart)
-    print(cart_item)
 
     for item in cart_item:
-        print(item.id)
         order_items = Order_Items.objects.create(product = item.product, quantity = item.quantity, cart = item.cart)
         order = Order.objects.create(order_items = order_items, total = amount) 
-        print(order)
-
         cart_item = Cart_Item.objects.get(id = item.id)
         cart_item.delete()
 
@@ -103,7 +96,6 @@ def cancel(request, id):
 
 def view_order(request):
     if not request.user.is_authenticated:
-        print("okay")
         messages.error(request, "Please login first to add to cart.")
         return HttpResponseRedirect(reverse("index"))
 

@@ -6,8 +6,9 @@ function count(){
     total.textContent = "$" + count.toFixed(2);
     return count.toFixed(2);    
 }
+
+
 document.addEventListener('DOMContentLoaded', () => {
-    var total = document.querySelector("#total");
     var rows = document.querySelectorAll(".row");
     var cancel = document.querySelectorAll(".cancel");
 
@@ -17,11 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const quantity = row.querySelector("#cart-item-quantity");
         var total = row.querySelector("#cart-item-total");
         console.log(extras);
+
         if (extras.length > 0){
             var extra_price = 0;
             extras.forEach( extra =>{
                 extra_price = 0.5 + extra_price;
             })
+
             total.textContent = "$" + ( (prices.dataset.price * quantity.dataset.quantity) + extra_price).toFixed(2);
             total.setAttribute("data-total", `${( (prices.dataset.price * quantity.dataset.quantity) + extra_price).toFixed(2)}`);
         }
@@ -32,11 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     count();
+
     cancel.forEach( can =>{
         can.addEventListener("click", ()=>{
             const parent = can.parentNode.parentNode;
             const id = parent.id;
             console.log(id);
+
             var table = document.querySelector("#table");
             table.deleteRow(parent.rowIndex);
             count();
@@ -49,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
         })
     })
+
+    //STRIPE
     var stripe = Stripe('pk_test_51GrotLFndG7VbPdRyG8LrsOsDLRCN8QrzhPKo0PLBew3Us0USJbjMuriQ3AD0p0CYgdvBgQdMe7gdCZ3wWBNaP6300ayLdsdxB');
     var elements = stripe.elements();
     

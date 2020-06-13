@@ -12,52 +12,6 @@
             <button class="items">Regular Pizza</button>
             <button class="items">Sicilian Pizza</button>
         </div>
-        <!--<div class="contents">
-            <div class="common-div">
-                <label>Select Pizza</label>
-                <select class="select" id="select-type" name="select">
-                    {% if regular  %}
-                    <option value="Regular">Regular</option>
-                    {% endif %}
-                    {% if sicilian  %}
-                    <option value="Sicilian">Sicilian</option>
-                    {% endif %}
-                </select>
-            </div>
-            <div class="common-div">
-                <label>No of Toppings</label>
-                <select class="select" id="select-no-of-top">
-                    {% for key, value in no_of_toppings.items %}
-                    <option value="{{value}}">{{value}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="common-div">
-                <label>Select toppings</label>
-                {% for topping in toppings %}
-                    <label class="smaller-label">{{topping}}</label>
-                    <input type="checkbox" value="{{topping}}" name="{{topping}}" class="toppings">
-                {% endfor %}
-            </div>
-            <div class="common-div">
-                <label>Size</label>
-                <label class="smaller-label">Small</label>
-                <input type="radio" name="pizza-size" class="size"checked="checked">
-                <label class="smaller-label">Large</label>
-                <input type="radio" name="pizza-size" class="size">
-            </div>
-            <div class="common-div">
-                {% for reg in regular %}
-                <h2>${{reg.price}}</h2>
-                {% endfor %}
-            </div>
-            <div class="common-div">
-                <button class="add-to-cart">
-                    Add to cart
-                </button>
-            </div>
-        </div>-->
-        
     </article>
     <article id="subs">
         <h2>Subs</h2>
@@ -66,39 +20,6 @@
                 <button class="items">{{ sub.sub }}</button>
             {% endfor %}
         </div>
-        <!--<div class="contents">
-            <div class="common-div">
-                <select class="select" id="select-sub-item">
-                    {% for sub in sub_items %}
-                    <option>{{ sub.sub }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="common-div">
-                <label>Extra</label>
-                <select class="select" id="select-extra">
-                    {% for extra in extras %}
-                    <option>{{ extra.extra }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="common-div">
-                <label>Size</label>
-                <label class="smaller-label">Small</label>
-                <input type="radio" name="size" class="small"checked="checked">
-                <label class="smaller-label">Large</label>
-                <input type="radio" name="size" class="large">
-            </div>
-            <div class="common-div">
-                <h2>$</h2>
-            </div>
-            <div class="common-div">
-                <button class="add-to-cart">
-                    Add to cart
-                </button>
-            </div>
-        </div>-->
-        
     </article>
     <article id="pasta">
         <h2>Pasta</h2>
@@ -107,24 +28,6 @@
                 <button class="items">{{ pasta.pasta }}</button>
             {% endfor %}
         </div>
-        <!--<div class="contents">
-            <div class="common-div">
-                <select class="select" id="select-pasta">
-                    {% for pasta in pastas %}
-                    <option>{{ pasta.pasta }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="common-div">
-                <h2>$</h2>
-            </div>
-            <div class="common-div">
-                <button class="add-to-cart">
-                    Add to cart
-                </button>
-            </div>
-        </div>-->
-        
     </article>
     <article id="salad">
         <h2>Salad</h2>
@@ -133,24 +36,6 @@
                 <button class="items">{{ salad.salad }}</button>
             {% endfor %}            
         </div>
-        <!--<div class="contents">
-            <div class="common-div">
-                <select class="select" id="select-salad">
-                    {% for salad in salass %}
-                    <option>{{ salad.salad }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="common-div">
-                <h2>$</h2>
-            </div>
-            <div class="common-div">
-                <button class="add-to-cart">
-                    Add to cart
-                </button>
-            </div>
-        </div>-->
-        
     </article>
     <article id="dinnerplatter">
         <h2>Dinner Platter</h2>
@@ -159,31 +44,6 @@
                 <button class="items">{{ platter.platter }}</button>
             {% endfor %}            
         </div>
-        <!-- <div class="contents">
-            <div class="common-div"> 
-                <select class="select" id="select-dp">
-                    {% for platter in dinnerplatters %}
-                    <option>{{ platter.platter }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="common-div">
-                <label>Size</label>
-                <label class="smaller-label">Small</label>
-                <input type="radio" name="size" class="small"checked="checked">
-                <label class="smaller-label">Large</label>
-                <input type="radio" name="size" class="large">
-            </div>
-            <div class="common-div">
-                <h2>$</h2>
-            </div>
-            <div class="common-div">
-                <button class="add-to-cart">
-                    Add to cart
-                </button>
-            </div>
-        </div>-->
-       
     </article>
 </section>
 {% endblock %}
