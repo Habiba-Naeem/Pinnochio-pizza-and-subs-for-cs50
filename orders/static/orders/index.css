@@ -1,4 +1,4 @@
-#pizza, #subs, #pasta, #salad, #dinnerplatter, #pizza .contents, #subs .contents, #pasta .contents, #salad .contents, #dinnerplatter .contents, #item #main-div, .cart {
+#pizza, #subs, #pasta, #salad, #dinnerplatter, #pizza .contents, #subs .contents, #pasta .contents, #salad .contents, #dinnerplatter .contents, .cart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
   font-size: 1.5rem;
   margin: 1%; }
 
-#pizza .contents .select, #pizza .contents .add-to-cart, #subs .contents .select, #subs .contents .add-to-cart, #pasta .contents .select, #pasta .contents .add-to-cart, #salad .contents .select, #salad .contents .add-to-cart, #dinnerplatter .contents .select, #dinnerplatter .contents .add-to-cart {
+#pizza .contents .select, #subs .contents .select, #pasta .contents .select, #salad .contents .select, #dinnerplatter .contents .select {
   width: 100%;
   font-family: "Libre Baskerville", serif;
   padding: 1%;
@@ -24,12 +24,29 @@
   font-size: 0.8rem;
   margin: 1%; }
 
-#heading, #item, #item .properties-div .property {
+#heading, #item, #item .properties-div .property, #item #price-div, #item #add-to-cart-div {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column; }
+
+#pizza .contents .items, #subs .contents .items, #pasta .contents .items, #salad .contents .items, #dinnerplatter .contents .items, #item #add-to-cart {
+  box-sizing: border-box;
+  margin: 3%;
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: #370617; }
+
+#pizza .contents .items:hover, #pizza .contents .items:active, #subs .contents .items:hover, #subs .contents .items:active, #pasta .contents .items:hover, #pasta .contents .items:active, #salad .contents .items:hover, #salad .contents .items:active, #dinnerplatter .contents .items:hover, #dinnerplatter .contents .items:active, #item #add-to-cart:hover, #item #add-to-cart:active {
+  font-weight: bold;
+  color: #990000;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none; }
 
 #navbar {
   color: #6c040e;
@@ -74,43 +91,40 @@
   flex-direction: row; }
   #pizza .contents .common-div, #subs .contents .common-div, #pasta .contents .common-div, #salad .contents .common-div, #dinnerplatter .contents .common-div {
     margin-bottom: 10%; }
-  #pizza .contents .items, #subs .contents .items, #pasta .contents .items, #salad .contents .items, #dinnerplatter .contents .items {
-    box-sizing: border-box;
-    margin: 3%;
-    font-family: "Libre Baskerville", serif;
-    font-size: 2rem;
-    border: none;
-    background-color: transparent;
-    color: #370617; }
-  #pizza .contents .items:hover, #pizza .contents .items:active, #subs .contents .items:hover, #subs .contents .items:active, #pasta .contents .items:hover, #pasta .contents .items:active, #salad .contents .items:hover, #salad .contents .items:active, #dinnerplatter .contents .items:hover, #dinnerplatter .contents .items:active {
-    font-weight: bold;
-    color: #990000;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    outline: none; }
 
 #item {
-  background-color: #002e47; }
+  width: 100%; }
   #item h1 {
     font-size: 3rem; }
-  #item #main-div {
-    flex-direction: row;
-    background-color: #370617; }
   #item .properties-div {
-    background-color: rgba(252, 193, 74, 0.445);
     box-sizing: border-box;
     margin: 1%;
     width: 50%; }
     #item .properties-div .property {
-      flex-direction: row; }
+      flex-direction: row;
+      margin-top: 2%; }
+    #item .properties-div #toppings-div {
+      font-size: 0.9rem; }
     #item .properties-div .property-label {
       font-size: 1.5rem;
       margin: 1%; }
-
-.add-to-cart:hover {
-  cursor: pointer;
-  border: none; }
+    #item .properties-div .div {
+      margin-right: 3%; }
+  #item #price-div, #item #add-to-cart-div {
+    flex-direction: row;
+    font-size: 3rem; }
+  #item #quantity {
+    padding: 1%;
+    width: 30%;
+    font-size: 1.1rem; }
+  #item #add-to-cart {
+    font-size: 1.3rem;
+    padding: 2%;
+    border: #990000 solid 1px;
+    border-radius: 0.2rem; }
+  #item #add-to-cart:hover, #item #add-to-cart:active {
+    border: #990000 solid 1px;
+    border-radius: 0.2rem; }
 
 .cart {
   padding-top: 5%;

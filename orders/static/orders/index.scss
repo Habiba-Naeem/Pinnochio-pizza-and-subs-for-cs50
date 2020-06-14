@@ -41,6 +41,23 @@ $blue: hsl(201, 100%, 14%);
     flex-wrap: wrap;
     flex-direction: column;
 }
+%buttons{
+    box-sizing: border-box;
+    margin: 3%;
+    font-family: $font;
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    color: $purple;
+}
+%button-hover-active{
+    font-weight: bold;
+    color: $red;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
 #navbar{
     color: $font-color;
     box-sizing: border-box;
@@ -97,62 +114,68 @@ $blue: hsl(201, 100%, 14%);
         .common-div{
             margin-bottom: 10%;
         }
-        .select, .add-to-cart{
+        .select{
             @extend %forcontents;
         }
         .smaller-label{
             @extend %newlabel;
         }
         .items{
-            box-sizing: border-box;
-            margin: 3%;
-            font-family: $font;
-            font-size: 2rem;
-            border: none;
-            background-color: transparent;
-            color: $purple;
+            @extend %buttons;
         }
         .items:hover, .items:active{
-            font-weight: bold;
-            color: $red;
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-            outline: none;
+           @extend %button-hover-active;
         }
     }        
 }
 #item{
     @extend %flexing;
-    background-color: $blue;
+    width: 100%;
     h1{
         font-size: 3rem;
     }
-    #main-div{
-        @extend %articles;
-        flex-direction: row;
-        background-color: $purple;
-    }
     .properties-div{
-        background-color: $yellow-red;
         box-sizing: border-box;
         margin: 1%;
         width: 50%;
         .property{
             @extend %flexing;
             flex-direction: row;
+            margin-top: 2%;
+        }
+        #toppings-div{
+            font-size: 0.9rem;
         }
         .property-label{
             font-size: 1.5rem;
             margin: 1%;
         }
+        .div{
+            margin-right: 3%;
+        }
     }
-}
-.add-to-cart:hover{
-        cursor: pointer;
-        border: none;
-        //background-color: $red;
-        //color: $cream;
+    #price-div,#add-to-cart-div{
+        @extend %flexing;
+        flex-direction: row;
+        font-size: 3rem;
+    }
+    #quantity{
+        padding: 1%;
+        width: 30%;
+        font-size: 1.1rem;
+    }
+    #add-to-cart{
+        @extend %buttons;
+        font-size: 1.3rem;
+        padding: 2%;
+        border: $red solid 1px;
+        border-radius: 0.2rem;
+    }
+    #add-to-cart:hover, #add-to-cart:active{
+        @extend %button-hover-active;
+        border: $red solid 1px;
+        border-radius: 0.2rem;
+    }
 }
 
 .cart{
