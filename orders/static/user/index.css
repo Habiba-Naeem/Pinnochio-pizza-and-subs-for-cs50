@@ -1,57 +1,109 @@
-.reg-log-sec, .reg-log-sec #buttons, .reg-log-sec #register, .reg-log-sec #login, .reg-log-sec #register div, .reg-log-sec #login div, .reg-log-sec #register div form, .reg-log-sec #login div form {
-  background-color: #00111a;
+.reg-log-sec, .reg-log-sec .register-login-div, .reg-log-sec form {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   flex-wrap: wrap;
-  color: #fcc14a;
-  padding-bottom: 3%; }
+  flex-direction: column; }
+
+.reg-log-sec .register-login-div button, .reg-log-sec form button {
+  box-sizing: border-box;
+  margin: 3%;
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: #370617; }
+
+.reg-log-sec .register-login-div button:hover, .reg-log-sec .register-login-div button:active, .reg-log-sec form button:hover, .reg-log-sec form button:active {
+  font-weight: bold;
+  color: #990000;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none; }
 
 .reg-log-sec {
-  padding-top: 10%;
-  width: 30%;
-  margin-left: 35%; }
-  .reg-log-sec #register {
-    display: none; }
-  .reg-log-sec #buttons {
-    padding-top: 1%;
-    background-color: #002538;
-    width: 100%;
-    flex-direction: row; }
-    .reg-log-sec #buttons button {
-      margin: 2%;
-      width: 30%;
-      font-family: "Julius Sans One";
-      padding: 1%;
-      font-size: 1rem;
-      background-color: #fcc14a;
-      border: 1px solid #f57e00;
-      border-radius: 0.2rem; }
-  .reg-log-sec #register, .reg-log-sec #login {
-    width: 100%; }
-    .reg-log-sec #register div, .reg-log-sec #login div {
-      width: 100%; }
-      .reg-log-sec #register div form, .reg-log-sec #login div form {
-        background-color: #002538;
-        width: 100%; }
-        .reg-log-sec #register div form input, .reg-log-sec #register div form label, .reg-log-sec #register div form button, .reg-log-sec #login div form input, .reg-log-sec #login div form label, .reg-log-sec #login div form button {
-          width: 70%;
-          padding: 1%;
-          margin: 2%;
-          border: none;
-          background-color: transparent; }
-        .reg-log-sec #register div form input, .reg-log-sec #login div form input {
-          border-bottom: 1px solid #f57e00;
-          color: #fcc14a; }
-        .reg-log-sec #register div form button, .reg-log-sec #login div form button {
-          background-color: #fcc14a;
-          padding: 2%; }
-          .reg-log-sec #register div form button:hover, .reg-log-sec #register div form button:active, .reg-log-sec #login div form button:hover, .reg-log-sec #login div form button:active {
-            background-color: #f57e00;
-            cursor: pointer; }
-    .reg-log-sec #register label, .reg-log-sec #login label {
-      display: block;
-      margin-bottom: 2%; }
+  flex-direction: row; }
+  .reg-log-sec li {
+    list-style: none; }
+  .reg-log-sec .article, .reg-log-sec form {
+    width: 50%; }
+  .reg-log-sec .register-login-div input, .reg-log-sec .register-login-div label, .reg-log-sec .register-login-div button, .reg-log-sec form input, .reg-log-sec form label, .reg-log-sec form button {
+    width: 80%;
+    padding: 1%;
+    margin: 2%;
+    border: none;
+    background-color: transparent; }
+  .reg-log-sec .register-login-div input, .reg-log-sec form input {
+    border-bottom: 1px solid #370617;
+    color: #990000;
+    font-size: 1.1rem; }
+    .reg-log-sec .register-login-div input:focus, .reg-log-sec form input:focus {
+      outline: none; }
+  .reg-log-sec .register-login-div button, .reg-log-sec form button {
+    font-size: 1.1rem; }
+  .reg-log-sec form {
+    background-color: rgba(252, 193, 74, 0.212); }
+
+/*
+.reg-log-sec{
+    @extend %flexing;
+    .articles{
+        @extend %flexing;
+    }
+    #buttons{
+        padding-top: 1%;
+        background-color:hsl(200, 100%, 11%);
+        width: 100%;
+        @extend %articles;
+        flex-direction: row;
+        button{
+            margin: 2%;
+            width: 30%;
+            font-family: $font;
+            padding: 1%;
+            font-size: 1rem;
+            //background-color: $cream;
+            //border: 1px solid $golden;
+            border-radius: 0.2rem;
+        }
+    }
+    #register, #login{
+        @extend %articles;
+        width: 100%;
+        div{
+            @extend %articles;
+            width: 100%;
+            form{
+                background-color: hsl(200, 100%, 11%);
+                @extend %articles;
+                width: 100%;
+                input, label,button{
+                    width: 70%;
+                    padding: 1%;
+                    margin: 2%;
+                    border: none;
+                    background-color: transparent;
+                }
+                input{
+                    //border-bottom: 1px solid $golden;
+                    //color: $cream;
+                }
+                button{
+                   // background-color: $cream;
+                    padding: 2%;
+                    &:hover, &:active{
+                     //   background-color: $golden;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        label{
+            display: block;
+            margin-bottom: 2%;
+        }
+    }
+}*/
 
 /*# sourceMappingURL=index.css.map */

@@ -15,7 +15,8 @@ stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 def index(request):
     if not request.user.is_authenticated:
-        return render(request, "user/index.html", {"message": None})
+        messages.warning(request, "Please login to add to cart.")
+        return HttpResponseRedirect(reverse("userindex"))
 
     context = {
         "user": request.user,

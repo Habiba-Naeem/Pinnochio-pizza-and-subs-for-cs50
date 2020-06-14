@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", ()=>{
-    var login_article = document.querySelector("#login");
+    /*var login_article = document.querySelector("#login");
     var register_article = document.querySelector("#register");
 
     var top_reg_button = document.querySelector("#top-reg-button");
@@ -25,6 +25,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
             register_article.style.display = "none";
             login_article.style.display = "block"
         }
-    })
+    })*/
 
 })

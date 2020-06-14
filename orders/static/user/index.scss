@@ -1,27 +1,88 @@
-$font: 'Julius Sans One';
-$blue:  hsl(201, 100%, 5%);
-$red: hsl(0, 69%, 50%);
-$golden:hsl(31, 100%, 48%);
-$cream:  hsl(40, 97%, 64%);
+$font: 'Libre Baskerville', serif;
+$font-color: hsl(354, 93%, 22%);
+$red:  hsl(0, 100%, 30%);
+$yellow-red: hsla(40, 97%, 64%, 0.212);
+$purple: hsl(339, 80%, 12%);
+$blue: hsl(201, 100%, 14%);
+
 %articles{
-    background-color:  $blue;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    color: $cream;        
+    color: $purple;
     padding-bottom: 3%;
+    padding-top: 3%;
+}
+%flexing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+%buttons{
+    box-sizing: border-box;
+    margin: 3%;
+    font-family: $font;
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    color: $purple;
+}
+%button-hover-active{
+    font-weight: bold;
+    color: $red;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 .reg-log-sec{
-    @extend %articles;
-    padding-top: 10%;
-    width: 30%;
-    margin-left: 35%;
-    #register{
-        display: none;
+    @extend %flexing;
+    flex-direction: row;
+    li{
+        list-style: none;
     }
-
+    .article,form{
+        width: 50%;
+    }
+    .register-login-div, form{
+        @extend %flexing;
+        input, label,button{
+            width: 80%;
+            padding: 1%;
+            margin: 2%;
+            border: none;
+            background-color: transparent;
+        }
+        input{
+            border-bottom: 1px solid $purple;
+            color: $red;
+            font-size: 1.1rem;
+            &:focus{
+                outline: none;
+            }
+        }
+        button{
+            @extend %buttons;
+            font-size: 1.1rem;
+            &:hover, &:active{
+             @extend %button-hover-active;
+            }
+        }
+    }
+    form{
+        background-color: $yellow-red;
+    }
+}
+/*
+.reg-log-sec{
+    @extend %flexing;
+    .articles{
+        @extend %flexing;
+    }
     #buttons{
         padding-top: 1%;
         background-color:hsl(200, 100%, 11%);
@@ -34,8 +95,8 @@ $cream:  hsl(40, 97%, 64%);
             font-family: $font;
             padding: 1%;
             font-size: 1rem;
-            background-color: $cream;
-            border: 1px solid $golden;
+            //background-color: $cream;
+            //border: 1px solid $golden;
             border-radius: 0.2rem;
         }
     }
@@ -57,14 +118,14 @@ $cream:  hsl(40, 97%, 64%);
                     background-color: transparent;
                 }
                 input{
-                    border-bottom: 1px solid $golden;
-                    color: $cream;
+                    //border-bottom: 1px solid $golden;
+                    //color: $cream;
                 }
                 button{
-                    background-color: $cream;
+                   // background-color: $cream;
                     padding: 2%;
                     &:hover, &:active{
-                        background-color: $golden;
+                     //   background-color: $golden;
                         cursor: pointer;
                     }
                 }
@@ -75,4 +136,4 @@ $cream:  hsl(40, 97%, 64%);
             margin-bottom: 2%;
         }
     }
-}
+}*/
