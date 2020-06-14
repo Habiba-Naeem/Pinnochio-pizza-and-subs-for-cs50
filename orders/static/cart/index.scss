@@ -1,0 +1,79 @@
+$font: 'Libre Baskerville', serif;
+$font-color: hsl(354, 93%, 22%);
+$red:  hsl(0, 100%, 30%);
+$yellow-red: hsla(40, 97%, 64%, 0.445);
+$purple: hsl(339, 80%, 12%);
+$blue: hsl(201, 100%, 14%);
+%articles{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        color: $purple;        
+        padding-bottom: 3%;
+        padding-top: 3%;
+}
+%labels{
+    label{
+        display: block;
+        font-size: 1.5rem;
+        margin: 1%;
+    }
+}
+%forcontents{
+    width: 100%;
+    font-family: $font;
+    padding: 1%;
+    font-size: 1rem;
+}
+
+%newlabel{
+    display: inline-block;
+    font-size: 0.8rem;
+    margin: 1%;
+}
+
+%flexing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+%buttons{
+    box-sizing: border-box;
+    margin: 3%;
+    font-family: $font;
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    color: $purple;
+}
+%button-hover-active{
+    font-weight: bold;
+    color: $red;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.cart{
+    @extend %articles;
+    background-color: $red;
+    width: 100%;
+    #table{
+        width: 100%;
+        background-color: $yellow-red;
+        .table-heading{
+            background-color: $blue;
+            width: 100%;
+            margin: 10%;
+        }
+    }
+}
+.checkout{
+    //@extend %articles;
+    color: rgb(10, 0, 0);
+    //background-color: rgb(235, 243, 223);
+}

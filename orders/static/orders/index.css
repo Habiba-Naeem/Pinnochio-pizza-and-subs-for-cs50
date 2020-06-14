@@ -1,4 +1,4 @@
-#pizza, #subs, #pasta, #salad, #dinnerplatter, #pizza .contents, #subs .contents, #pasta .contents, #salad .contents, #dinnerplatter .contents, .cart {
+#pizza, #subs, #pasta, #salad, #dinnerplatter, #pizza .contents, #subs .contents, #pasta .contents, #salad .contents, #dinnerplatter .contents {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,12 +125,5 @@
   #item #add-to-cart:hover, #item #add-to-cart:active {
     border: #990000 solid 1px;
     border-radius: 0.2rem; }
-
-.cart {
-  padding-top: 5%;
-  width: 100%; }
-
-.checkout {
-  color: #0a0000; }
 
 /*# sourceMappingURL=index.css.map */

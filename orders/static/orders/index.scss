@@ -177,15 +177,3 @@ $blue: hsl(201, 100%, 14%);
         border-radius: 0.2rem;
     }
 }
-
-.cart{
-    @extend %articles;
-    padding-top: 5%;
-    //background-color: rgb(124, 18, 18);
-    width: 100%;
-}
-.checkout{
-    //@extend %articles;
-    color: rgb(10, 0, 0);
-    //background-color: rgb(235, 243, 223);
-}
