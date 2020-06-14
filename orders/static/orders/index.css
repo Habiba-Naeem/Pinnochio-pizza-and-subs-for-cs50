@@ -1,12 +1,12 @@
-#pizza, #subs, #pasta, #salad, #dinnerplatter, .cart {
-  background-color: #00111a;
+#pizza, #subs, #pasta, #salad, #dinnerplatter, #pizza .contents, #subs .contents, #pasta .contents, #salad .contents, #dinnerplatter .contents, #item #main-div, .cart {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-  color: #fcc14a;
-  padding-bottom: 3%; }
+  color: #370617;
+  padding-bottom: 3%;
+  padding-top: 3%; }
 
 #pizza .contents label, #subs .contents label, #pasta .contents label, #salad .contents label, #dinnerplatter .contents label {
   display: block;
@@ -15,7 +15,7 @@
 
 #pizza .contents .select, #pizza .contents .add-to-cart, #subs .contents .select, #subs .contents .add-to-cart, #pasta .contents .select, #pasta .contents .add-to-cart, #salad .contents .select, #salad .contents .add-to-cart, #dinnerplatter .contents .select, #dinnerplatter .contents .add-to-cart {
   width: 100%;
-  font-family: "Julius Sans One";
+  font-family: "Libre Baskerville", serif;
   padding: 1%;
   font-size: 1rem; }
 
@@ -24,67 +24,99 @@
   font-size: 0.8rem;
   margin: 1%; }
 
-#navbar {
-  background-color: #00111a;
-  padding: 1%;
-  position: fixed;
-  top: 0;
-  width: 100%; }
-  #navbar ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly; }
-  #navbar li {
-    list-style: none;
-    display: inline-block; }
-  #navbar button {
-    font-family: "Julius Sans One";
-    font-size: 1.3rem;
-    background-color: transparent;
-    border: none; }
-  #navbar a {
-    font-family: "Julius Sans One";
-    color: #fcc14a;
-    text-decoration: none; }
-  #navbar a:hover {
-    font-weight: bolder; }
-
-#heading {
-  background-color: #f57e00;
+#heading, #item, #item .properties-div .property {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh; }
+  flex-wrap: wrap;
+  flex-direction: column; }
+
+#navbar {
+  color: #6c040e;
+  box-sizing: border-box;
+  position: sticky;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 2%;
+  padding-right: 2%; }
+  #navbar h2 {
+    width: 100%; }
+  #navbar ul {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; }
+  #navbar li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 2%;
+    margin-right: 2%; }
+  #navbar a {
+    font-family: 'Taviraj', serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #6c040e; }
+  #navbar a:hover {
+    font-weight: bold; }
+
+#heading {
+  height: 80vh;
+  color: #6c040e; }
   #heading h1 {
     font-size: 4rem; }
 
-#pizza h1, #subs h1, #pasta h1, #salad h1, #dinnerplatter h1 {
-  font-size: 3rem; }
 #pizza h2, #subs h2, #pasta h2, #salad h2, #dinnerplatter h2 {
-  font-size: 2rem; }
+  font-size: 4rem; }
 #pizza .contents, #subs .contents, #pasta .contents, #salad .contents, #dinnerplatter .contents {
-  width: 20%;
-  overflow: hidden; }
+  width: 100%;
+  overflow: hidden;
+  flex-direction: row; }
   #pizza .contents .common-div, #subs .contents .common-div, #pasta .contents .common-div, #salad .contents .common-div, #dinnerplatter .contents .common-div {
     margin-bottom: 10%; }
+  #pizza .contents .items, #subs .contents .items, #pasta .contents .items, #salad .contents .items, #dinnerplatter .contents .items {
+    box-sizing: border-box;
+    margin: 3%;
+    font-family: "Libre Baskerville", serif;
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    color: #370617; }
+  #pizza .contents .items:hover, #pizza .contents .items:active, #subs .contents .items:hover, #subs .contents .items:active, #pasta .contents .items:hover, #pasta .contents .items:active, #salad .contents .items:hover, #salad .contents .items:active, #dinnerplatter .contents .items:hover, #dinnerplatter .contents .items:active {
+    font-weight: bold;
+    color: #990000;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none; }
 
-#subs, #dinnerplatter {
-  background-color: #f57e00;
-  color: black; }
+#item {
+  background-color: #002e47; }
+  #item h1 {
+    font-size: 3rem; }
+  #item #main-div {
+    flex-direction: row;
+    background-color: #370617; }
+  #item .properties-div {
+    background-color: rgba(252, 193, 74, 0.445);
+    box-sizing: border-box;
+    margin: 1%;
+    width: 50%; }
+    #item .properties-div .property {
+      flex-direction: row; }
+    #item .properties-div .property-label {
+      font-size: 1.5rem;
+      margin: 1%; }
 
 .add-to-cart:hover {
   cursor: pointer;
-  border: none;
-  background-color: #d72828;
-  color: #fcc14a; }
+  border: none; }
 
 .cart {
   padding-top: 5%;
-  background-color: #7c1212;
   width: 100%; }
 
 .checkout {
-  color: #0a0000;
-  background-color: #ebf3df; }
+  color: #0a0000; }
 
 /*# sourceMappingURL=index.css.map */

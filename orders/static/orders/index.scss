@@ -1,17 +1,18 @@
-$font: 'Julius Sans One';
-$blue:  hsl(201, 100%, 5%);
-$red: hsl(0, 69%, 50%);
-$golden:hsl(31, 100%, 48%);
-$cream:  hsl(40, 97%, 64%);
+$font: 'Libre Baskerville', serif;
+$font-color: hsl(354, 93%, 22%);
+$red:  hsl(0, 100%, 30%);
+$yellow-red: hsla(40, 97%, 64%, 0.445);
+$purple: hsl(339, 80%, 12%);
+$blue: hsl(201, 100%, 14%);
 %articles{
-        background-color:  $blue;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         flex-wrap: wrap;
-        color: $cream;        
+        color: $purple;        
         padding-bottom: 3%;
+        padding-top: 3%;
 }
 %labels{
     label{
@@ -32,58 +33,67 @@ $cream:  hsl(40, 97%, 64%);
     font-size: 0.8rem;
     margin: 1%;
 }
+
+%flexing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 #navbar{
-    background-color: $blue;
-    padding: 1%;
-    position: fixed;
-    top: 0;
+    color: $font-color;
+    box-sizing: border-box;
+    position: sticky;
     width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 2%;
+    padding-right: 2%;
+    h2{
+        width: 100%;
+    }
     ul{
         width: 100%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-end;
     }
     li{
         list-style: none;
         display: inline-block;
-    }
-    button{
-        font-family: $font;
-        font-size: 1.3rem;
-        background-color: transparent;
-        border: none;
+        margin-left: 2%;
+        margin-right: 2%;
     }
     a{
-        font-family: $font;
-        color: $cream;
+        font-family: 'Taviraj', serif;
+        font-size: 1.5rem;
         text-decoration: none;
+        color: $font-color;
     }
     a:hover{
-        font-weight: bolder;
+        font-weight: bold;
     }
 }
 #heading{
-    background-color: $golden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60vh;
+    @extend %flexing;
+    height: 80vh;
+    color: $font-color;
     h1{
         font-size: 4rem;
     }
 }
 #pizza, #subs,#pasta, #salad, #dinnerplatter{
     @extend %articles;
-    h1{
-        font-size: 3rem;
-    }
     h2{
-        font-size: 2rem;
+        font-size: 4rem;
     }
     .contents{
-        width: 20%;
+        width: 100%;
         overflow: hidden;
         @extend %labels;
+        @extend %articles;
+        flex-direction: row;
         .common-div{
             margin-bottom: 10%;
         }
@@ -93,28 +103,66 @@ $cream:  hsl(40, 97%, 64%);
         .smaller-label{
             @extend %newlabel;
         }
-
+        .items{
+            box-sizing: border-box;
+            margin: 3%;
+            font-family: $font;
+            font-size: 2rem;
+            border: none;
+            background-color: transparent;
+            color: $purple;
+        }
+        .items:hover, .items:active{
+            font-weight: bold;
+            color: $red;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            outline: none;
+        }
     }        
 }
-#subs, #dinnerplatter{
-    background-color: $golden;
-    color: black;
+#item{
+    @extend %flexing;
+    background-color: $blue;
+    h1{
+        font-size: 3rem;
+    }
+    #main-div{
+        @extend %articles;
+        flex-direction: row;
+        background-color: $purple;
+    }
+    .properties-div{
+        background-color: $yellow-red;
+        box-sizing: border-box;
+        margin: 1%;
+        width: 50%;
+        .property{
+            @extend %flexing;
+            flex-direction: row;
+        }
+        .property-label{
+            font-size: 1.5rem;
+            margin: 1%;
+        }
+    }
 }
 .add-to-cart:hover{
         cursor: pointer;
         border: none;
-        background-color: $red;
-        color: $cream;
+        //background-color: $red;
+        //color: $cream;
 }
 
 .cart{
     @extend %articles;
     padding-top: 5%;
-    background-color: rgb(124, 18, 18);
+    //background-color: rgb(124, 18, 18);
     width: 100%;
 }
 .checkout{
     //@extend %articles;
     color: rgb(10, 0, 0);
-    background-color: rgb(235, 243, 223);
+    //background-color: rgb(235, 243, 223);
 }

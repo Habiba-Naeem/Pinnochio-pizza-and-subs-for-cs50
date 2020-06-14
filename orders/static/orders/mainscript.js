@@ -183,10 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
         request.onload = () => {
             const data = JSON.parse(request.responseText);
             if (data.success){
-                console.log("okay")
+                alert("Added to cart!");
             }
             else{
-                console.log("not okay")
+                console.log("not okay");
             }
         }
         

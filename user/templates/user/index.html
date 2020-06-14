@@ -1,7 +1,8 @@
-
 {% extends "orders/layout.html"%}
 {% load static %}
 {% block content %}
+
+{% csrf_token %}
         <section class="reg-log-sec">
             <div id="buttons">
                 <button id="top-reg-button">Register</button>

@@ -1,58 +1,70 @@
 {% extends "orders/layout.html" %}
 
 {% block content %}
-<sectionn id="heading">
-    <article>
+<section id="item">
+    <article id="item">
         <h1 id="itemname" data-category = "{{ category }}">{{ item_name }}</h1>
        {% if subs or pizza or dinnerplatter  %}
-        <div>
-            <label for="size">Small</label>
-            <input type="radio" name="size" class="size" value="Small"checked>
-            <label for="size">Large</label>
-            <input type="radio" name="size" class="size" value="Large">
-        </div>
-        {% endif %}
-        {% if subs %}
-        <div>
-            {% for extra in extras %}
-            <label>{{ extra.extra }}</label>
-            <input type="checkbox" name="extra" id="{{ extra }}" class="extra" data-extra-id="{{extra.id}}" value="{{extra.extra}}">
-            {% endfor %}
-            <p>$0.50 for every extra</p>
-        </div>
-        {% endif %}
-        {% if pizza %}
-        <div>
-            <label for="no-of-toppings">None</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Cheese" data-tops="0" checked>
-            <label for="no-of-toppings">One topping</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="One" data-tops="1">
-            <label for="no-of-toppings">Two toppings</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Two" data-tops="2">
-            <label for="no-of-toppings">Three toppings</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Three" data-tops="3">
-            <label for="no-of-toppings">Five toppings</label>
-            <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Five" data-tops="5">
-        </div>
-        <div>
-            {% for topping in toppings %}
-            <label>{{ topping }}</label>
-            <input type="checkbox" name="topping" class="toppings" id="{{topping}}" value="{{topping}}" data-topping-id="{{topping.id}}">
-            {% endfor %}
-        </div>
-        {% endif %}
-        <div>
-            <label for="quantity">Quantity</label>
-            <button id="increase">+</button>
-            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
-            <button id="decrease">-</button>
-        </div>
-        <div>
-            <label id="price" data-price="{{ price }}">${{ price }}</label>
-        </div>
-        <div>
-            <button id="add-to-cart">Add to cart</button>
-        </div>
+                <div class="properties-div">
+                    <label id="size" class="property-label">Size</label>
+                    <div class="property">
+                        <label for="size">Small</label>
+                        <input type="radio" name="size" class="size" value="Small"checked>
+                        <label for="size">Large</label>
+                        <input type="radio" name="size" class="size" value="Large">
+                    </div>
+                </div>
+                {% endif %}
+                {% if subs %}
+                <div class="properties-div">
+                    <label id="extra" class="property-label">Extras</label>
+                    <div class="property">
+                        {% for extra in extras %}
+                        <label>{{ extra.extra }}</label>
+                        <input type="checkbox" name="extra" id="{{ extra }}" class="extra" data-extra-id="{{extra.id}}" value="{{extra.extra}}">
+                        {% endfor %}
+                        <p>$0.50 for every extra</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% if pizza %}
+                <div class="properties-div">
+                    <label id="no-of-toppings" class="property-label">Number of Toppings</label>
+                    <div class="property">
+                        <label for="no-of-toppings">None</label>
+                        <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Cheese" data-tops="0" checked>
+                        <label for="no-of-toppings">One topping</label>
+                        <input type="radio" name="no-of-toppings" class="no-of-toppings" value="One" data-tops="1">
+                        <label for="no-of-toppings">Two toppings</label>
+                        <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Two" data-tops="2">
+                        <label for="no-of-toppings">Three toppings</label>
+                        <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Three" data-tops="3">
+                        <label for="no-of-toppings">Five toppings</label>
+                        <input type="radio" name="no-of-toppings" class="no-of-toppings" value="Five" data-tops="5">    
+                    </div>
+                   </div>
+                <div class="properties-div">            
+                    <label id="toppings" class="property-label">Toppings</label>
+                    <div class="property">
+                        {% for topping in toppings %}
+                        <label>{{ topping }}</label>
+                        <input type="checkbox" name="topping" class="toppings" id="{{topping}}" value="{{topping}}" data-topping-id="{{topping.id}}">
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="properties-div">
+                    <label for="quantity" class="property-label">Quantity</label>
+                    <button id="increase">+</button>
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+                    <button id="decrease">-</button>
+                </div>
+                <div class="properties-div">
+                    <label id="price" data-price="{{ price }}">${{ price }}</label>
+                </div>
+                <div class="properties-div">
+                    <button id="add-to-cart">Add to cart</button>
+                </div>       
     </article>
 </section>
 {% endblock %}

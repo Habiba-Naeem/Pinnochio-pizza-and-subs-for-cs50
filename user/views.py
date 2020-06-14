@@ -26,14 +26,14 @@ def login_user(request):
     
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("userindex"))
     else:
         messages.warning(request, "Please provide correct username and password.")
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("userindex"))
         
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("userindex"))
 
 def register(request):
 
@@ -59,7 +59,7 @@ def register(request):
                 user_log = authenticate(request, username=username, password=password)
                 login(request, user_log)
 
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('userindex'))
         else:
             messages.error(request, "Passwords do not match")
             return HttpResponseRedirect(reverse("register"))

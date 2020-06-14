@@ -4,7 +4,8 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'orders/style.css' %}">
         <link rel="stylesheet" href="{% static 'orders/index.css' %}">
         <link rel="stylesheet" href="{% static 'user/index.css' %}">
@@ -16,40 +17,34 @@
     </head>
     <body>
         <nav id="navbar">
+            <h2>Pinocchio's Pizza & Subs</h2>
             <ul>
                 <li class="li">
-                    <button>
                         <a id="menu-link" href="{% url 'index'%}">
                             Menu
                         </a>
-                    </button>
                 </li>
                 <li class="li">
-                    <button>
                         <a id="cart-link" href="{% url 'cart' %}">
                             Cart
                         </a>
-                    </button>
                 </li>
                 {% if request.user.is_superuser %}
                 <li class="li">
-                    <button>
                         <a id="order-link" href="{% url 'view_order' %}">
                             Order
                         </a>
-                    </button>
                 </li>
                 {% endif %}
-                {% if user %}
+                {% if request.user.is_authenticated %}
                     <li class="li">
-                        <button>
+
                             {{ user.username }}
-                        </button>
+
                     </li>
                 {% endif %}
                 <li class="li">
-                    <button>
-                        {% if user.username %}
+                        {% if request.user.is_authenticated %}
                             <a  id="logout-link" href="{% url 'logout' %}">
                                 Logout
                             </a>
@@ -58,7 +53,6 @@
                                 Login
                             </a>
                         {% endif %}
-                    </button>
                 </li>
             </ul>
         </nav>

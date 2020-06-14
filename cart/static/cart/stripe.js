@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Call stripe.confirmCardPayment() with the client secret.
         form.addEventListener('submit', function(ev) {
-            var confirmb = confirm(`You confirm to pay ${count()} for the selected items`);
+            var confirmb = confirm(`You confirm to pay $${count()} for the selected items`);
             if ( confirmb === true ){
                 ev.preventDefault();
                 stripe.confirmCardPayment(clientSecret, {
@@ -112,7 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
                             request.onload = () =>{
                                 const data = JSON.parse(request.responseText);
-                                console.log(data)
+                                console.log(data);
+                                if(data.success){
+                                    alert("Payment Successful");
+                                }
                             }
                             request.send();
                             return false;
