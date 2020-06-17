@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 console.log(data);
                                 if(data.success){
                                     alert("Payment Successful");
+                                    location.reload();
                                 }
                             }
                             request.send();

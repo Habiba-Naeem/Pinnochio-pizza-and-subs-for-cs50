@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Added to cart!");
             }
             else{
-                console.log("not okay");
+                alert("Please login to add to cart");
             }
         }
         

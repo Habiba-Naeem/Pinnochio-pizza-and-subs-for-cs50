@@ -15,7 +15,7 @@ stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 def index(request):
     if not request.user.is_authenticated:
-        messages.warning(request, "Please login to add to cart.")
+        messages.warning(request, "Please login to view cart.")
         return HttpResponseRedirect(reverse("userindex"))
 
     context = {
@@ -28,7 +28,6 @@ def index(request):
 
 def cart_item(request, item):
     if not request.user.is_authenticated:
-        messages.error(request, "Please login first to add to cart.")
         return JsonResponse({"success": False})
 
     stuff = json.loads(item)

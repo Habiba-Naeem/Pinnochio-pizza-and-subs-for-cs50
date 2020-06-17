@@ -6,8 +6,7 @@ Web Programming with Python and JavaScript
 Personal touches includes,
 
 
-        Site users also have the option to view the orders that have been placed by them.
-
+       
         Cancel any cart item.
 
         Stripe payment:
