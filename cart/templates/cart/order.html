@@ -5,37 +5,46 @@
     
     <article class="cart">
         <table id="table">
-            <h1>{{ user }}</h1>
-            <tr class="begin-row">
-                <th class="table-heading">Product</th>
-                <th class="table-heading">Quantity</th>
-                <th class="table-heading">Total</th>
-                <th class="table-heading">User</th>
-            </tr>
-            {% for order in orders %}
-            <tr class="row" id="">
-                <td class="table-data" id="product-name">{{ order.order_items.product.name }}
-                    <br>
-                    <label id="product-price" data-price="{{ order.order_items.product.price }}">${{ order.order_items.product.price }}</label>
-                    <label id="product-size">{{ order.order_items.product.size }}</label>
-                    {% if order.order_items.product.additional.toppings.all %}
-                        {% for top in order.order_items.product.additional.toppings.all %}
-                            <label id="product-toppings">{{ top }}</label>
-                        {% endfor %}
-                    {% endif %}
-
-                    {% if order.order_items.product.additional.extra.all %}
-                        {% for extra in order.order_items.product.additional.extra.all %}
-                            <label id="product-extras" data-price="{{ extra.price }}">{{ extra.extra }}</label>
-                        {% endfor %}
-                    {% endif %}
-                </td>
-                <td class="table-data" id="cart-item-quantity" data-quantity="{{ order.order_items.quantity }}">{{ order.order_items.quantity }}</td>
+            <thead>
+                <tr class="begin-row">
+                    <th class="table-heading">Product</th>
+                    <th class="table-heading">Quantity</th>
+                    <th class="table-heading">Total</th>
+                    <th class="table-heading">User</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr class="row" id="">
+                    <td class="table-data table-name" id="product-name">{{ order.order_items.product.name }}
+                        <br>
+                        <div class="inside-row">
+                            <label id="product-price" data-price="{{ order.order_items.product.price }}">${{ order.order_items.product.price }}</label>
+                            <label id="product-size">{{ order.order_items.product.size }}</label>
+                            <br>
+                            <div class="inside">
+                                {% if order.order_items.product.additional.toppings.all %}
+                                    {% for top in order.order_items.product.additional.toppings.all %}
+                                        <label id="product-toppings">{{ top }}</label>
+                                    {% endfor %}
+                                {% endif %}
             
-                <td class="table-data" id="cart-item-total">{{ order.total }}</td>
-                <td class="table-data" id="{{ order.order_items.cart.user }}">{{ order.order_items.cart.user }}</td>
-            </tr>
-            {% endfor%}
+                                {% if order.order_items.product.additional.extra.all %}
+                                    {% for extra in order.order_items.product.additional.extra.all %}
+                                        <label id="product-extras" data-price="{{ extra.price }}">{{ extra.extra }}</label>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-data" id="cart-item-quantity" data-quantity="{{ order.order_items.quantity }}">{{ order.order_items.quantity }}</td>
+                
+                    <td class="table-data" id="cart-item-total">{{ order.total }}</td>
+                    <td class="table-data" id="{{ order.order_items.cart.user }}">{{ order.order_items.cart.user }}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+           
         </table>
     </article>
 </section>

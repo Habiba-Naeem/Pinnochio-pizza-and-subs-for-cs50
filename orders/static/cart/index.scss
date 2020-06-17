@@ -1,7 +1,7 @@
 $font: 'Libre Baskerville', serif;
 $font-color: hsl(354, 93%, 22%);
 $red:  hsl(0, 100%, 30%);
-$yellow-red: hsla(40, 97%, 64%, 0.445);
+$yellow-red: hsla(40, 94%, 80%, 0.445);
 $purple: hsl(339, 80%, 12%);
 $blue: hsl(201, 100%, 14%);
 %articles{
@@ -16,9 +16,7 @@ $blue: hsl(201, 100%, 14%);
 }
 %labels{
     label{
-        display: block;
-        font-size: 1.5rem;
-        margin: 1%;
+        font-size: 0.7rem;
     }
 }
 %forcontents{
@@ -60,20 +58,73 @@ $blue: hsl(201, 100%, 14%);
 }
 .cart{
     @extend %articles;
-    background-color: $red;
     width: 100%;
+    h1{
+        font-size: 2rem;
+    }
+    .contents{
+        width: 100%;
+        overflow: hidden;
+        @extend %flexing;
+        flex-direction: row;
+    }
     #table{
         width: 100%;
-        background-color: $yellow-red;
-        .table-heading{
-            background-color: $blue;
+        @extend %flexing;
+        justify-content: space-evenly;
+        .inside-row{
+            @extend %labels;
+            display: inline-block;
+            width: 30%;
+        }
+        .inside{
+            display: inline-block;
             width: 100%;
-            margin: 10%;
+        }
+        thead,tbody{
+            width: 100%;
+            @extend %flexing;
+            justify-content: space-between;
+        }
+        tr{
+            @extend %flexing;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            margin: 0 0 2% 0;
+        }
+        
+        .table-name{
+            @extend %flexing;
+            justify-content: space-evenly;
+            width: 20%;
         }
     }
 }
 .checkout{
-    //@extend %articles;
-    color: rgb(10, 0, 0);
-    //background-color: rgb(235, 243, 223);
+    @extend %flexing;
+    width: 100%;
+    background-color: $yellow-red;
+    h1{
+        font-size: 2rem;
+    }
+    #payment-form{
+        @extend %flexing;
+        width: 50%;
+        div{
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+        #total{
+            font-size: 1.5rem;
+        }
+        #card-element{
+            width: 100%;
+            padding: 1%;
+        }
+        #submit{
+            @extend %buttons;
+            @extend %button-hover-active;
+        }
+    }
 }

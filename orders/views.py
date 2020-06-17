@@ -57,13 +57,21 @@ def pizza(request, item_name):
 
 def subs(request, item_name):
     try:
-        context = {
-            "item_name": item_name,
-            "price": Subs.objects.get(subs_items__sub = item_name, size = 'Small').price,
-            "subs": True,
-            "category": Category.objects.get(menu__menu = "Subs").id,
-            "extras": Extra.objects.all()
-        }
+        if item_name == 'Extra Cheese on any sub':
+            context = {
+                "item_name": item_name,
+                "price": Subs.objects.get(subs_items__sub = item_name, size = 'Small').price,
+                "subs": True,
+                "category": Category.objects.get(menu__menu = "Subs").id,
+            }
+        else:
+            context = {
+                "item_name": item_name,
+                "price": Subs.objects.get(subs_items__sub = item_name, size = 'Small').price,
+                "subs": True,
+                "category": Category.objects.get(menu__menu = "Subs").id,
+                "extras": Extra.objects.all()
+            }
     #if subs with small size do not exists
     except Subs.DoesNotExist:
         context = {

@@ -8,18 +8,76 @@
   padding-bottom: 3%;
   padding-top: 3%; }
 
+.cart #table .inside-row label {
+  font-size: 0.7rem; }
+
+.cart .contents, .cart #table, .cart #table thead, .cart #table tbody, .cart #table tr, .cart #table .table-name, .checkout, .checkout #payment-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column; }
+
+.checkout #payment-form #submit {
+  box-sizing: border-box;
+  margin: 3%;
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: #370617; }
+
+.checkout #payment-form #submit {
+  font-weight: bold;
+  color: #990000;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none; }
+
 .cart {
-  background-color: #990000;
   width: 100%; }
+  .cart h1 {
+    font-size: 2rem; }
+  .cart .contents {
+    width: 100%;
+    overflow: hidden;
+    flex-direction: row; }
   .cart #table {
     width: 100%;
-    background-color: rgba(252, 193, 74, 0.445); }
-    .cart #table .table-heading {
-      background-color: #002e47;
+    justify-content: space-evenly; }
+    .cart #table .inside-row {
+      display: inline-block;
+      width: 30%; }
+    .cart #table .inside {
+      display: inline-block;
+      width: 100%; }
+    .cart #table thead, .cart #table tbody {
       width: 100%;
-      margin: 10%; }
+      justify-content: space-between; }
+    .cart #table tr {
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 100%;
+      margin: 0 0 2% 0; }
+    .cart #table .table-name {
+      justify-content: space-evenly;
+      width: 20%; }
 
 .checkout {
-  color: #0a0000; }
+  width: 100%;
+  background-color: rgba(252, 220, 156, 0.445); }
+  .checkout h1 {
+    font-size: 2rem; }
+  .checkout #payment-form {
+    width: 50%; }
+    .checkout #payment-form div {
+      margin-top: 3%;
+      margin-bottom: 3%; }
+    .checkout #payment-form #total {
+      font-size: 1.5rem; }
+    .checkout #payment-form #card-element {
+      width: 100%;
+      padding: 1%; }
 
 /*# sourceMappingURL=index.css.map */
