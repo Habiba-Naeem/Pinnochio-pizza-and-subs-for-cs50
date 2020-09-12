@@ -1,22 +1,10 @@
-# Project 3
+# Pinocchio's Pizza and Subs
+A personalized webiste for Pinocchio's restaurant where customers can place orders and get them delivered.
 
-Web Programming with Python and JavaScript
+# Built using
+1. Django framework
+2. HTML/CSS and Javascript
+3. Strip API for online payment
 
-
-Personal touches includes,
-
-
-       
-        Cancel any cart item.
-
-        Stripe payment:
-            You can use following credit card numbers along with a valid expiry date
-                
-                
-                4242424242424242
-
-
-                4000002500003155 (For payment that requires authentication )
-
-
-                4000000000009995 (For insufficient balance)
+# Demo 
+https://youtu.be/OVrGoIIK0Eg
